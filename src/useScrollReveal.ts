@@ -39,8 +39,27 @@ export function getRevealProgress(
   return Math.min(enteringProgress, leavingProgress);
 }
 
+function getStableBounds(section: HTMLElement) {
+  let documentTop = 0;
+  let current: HTMLElement | null = section;
+
+  while (current) {
+    documentTop += current.offsetTop;
+    current = current.offsetParent as HTMLElement | null;
+  }
+
+  const top = documentTop - window.scrollY;
+
+  return {
+    top,
+    bottom: top + section.offsetHeight,
+    height: section.offsetHeight,
+  };
+}
+
 function setRevealMotion(section: HTMLElement, progress: number, direction: ScrollDirection) {
-  const distance = 1 - progress;
+  const roundedProgress = Number(progress.toFixed(3));
+  const distance = 1 - roundedProgress;
   const variant = section.dataset.scrollReveal;
   let x = 0;
   let y = 0;
@@ -57,8 +76,9 @@ function setRevealMotion(section: HTMLElement, progress: number, direction: Scro
   }
 
   section.dataset.scrollDirection = direction;
-  section.dataset.scrollState = progress >= 1 ? "visible" : progress <= 0 ? "hidden" : "revealing";
-  section.style.setProperty("--reveal-progress", progress.toFixed(3));
+  section.dataset.scrollState =
+    roundedProgress >= 1 ? "visible" : roundedProgress <= 0 ? "hidden" : "revealing";
+  section.style.setProperty("--reveal-progress", roundedProgress.toFixed(3));
   section.style.setProperty("--reveal-x", `${x.toFixed(3)}rem`);
   section.style.setProperty("--reveal-y", `${y.toFixed(3)}rem`);
   section.style.setProperty("--reveal-scale", scale.toFixed(3));
@@ -83,7 +103,7 @@ export function useScrollReveal() {
       const viewportCenter = viewportHeight * revealViewportRange.fullBoundary;
 
       sections.forEach((section) => {
-        const bounds = section.getBoundingClientRect();
+        const bounds = getStableBounds(section);
         const progress = getRevealProgress(bounds.top, bounds.bottom, viewportHeight);
         const locationDirection: ScrollDirection =
           bounds.top + bounds.height / 2 >= viewportCenter ? "down" : "up";
@@ -102,6 +122,11 @@ export function useScrollReveal() {
 
     const handleScroll = () => {
       const currentPosition = window.scrollY;
+
+      if (currentPosition === previousPosition) {
+        return;
+      }
+
       scrollDirection = getScrollDirection(previousPosition, currentPosition, scrollDirection);
       previousPosition = currentPosition;
       scheduleUpdate();

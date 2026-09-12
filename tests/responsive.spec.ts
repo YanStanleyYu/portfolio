@@ -64,7 +64,15 @@ test("links section reveal progress to its viewport position", async ({ page }) 
 
   const setSectionTop = async (viewportRatio: number) => {
     await page.locator("#projects").evaluate((section, ratio) => {
-      const documentTop = section.getBoundingClientRect().top + window.scrollY;
+      let documentTop = 0;
+      let current: HTMLElement | null = section as HTMLElement;
+
+      while (current) {
+        documentTop += current.offsetTop;
+        current = current.offsetParent as HTMLElement | null;
+      }
+
+      document.documentElement.style.scrollBehavior = "auto";
       window.scrollTo(0, documentTop - window.innerHeight * ratio);
     }, viewportRatio);
     await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
@@ -78,4 +86,37 @@ test("links section reveal progress to its viewport position", async ({ page }) 
   expect(await setSectionTop(0.5)).toBeCloseTo(1, 1);
   expect(await setSectionTop(0.625)).toBeCloseTo(0.5, 1);
   expect(await setSectionTop(0.75)).toBeCloseTo(0, 1);
+});
+
+test("does not update reveal state without a real scroll change", async ({ page }) => {
+  await page.goto("/");
+  const impact = page.locator("#impact");
+
+  await impact.evaluate((section) => {
+    let documentTop = 0;
+    let current: HTMLElement | null = section as HTMLElement;
+
+    while (current) {
+      documentTop += current.offsetTop;
+      current = current.offsetParent as HTMLElement | null;
+    }
+
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, documentTop - window.innerHeight * 0.5);
+  });
+  await expect(impact).toHaveAttribute("data-scroll-state", "visible");
+  await page.waitForTimeout(100);
+
+  await impact.evaluate((section) => {
+    section.dataset.scrollState = "stationary";
+    section.style.setProperty("--reveal-progress", "0.321");
+    window.dispatchEvent(new Event("scroll"));
+  });
+  await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
+
+  await expect(impact).toHaveAttribute("data-scroll-state", "stationary");
+  await expect(impact).toHaveCSS("--reveal-progress", "0.321");
+
+  await page.evaluate(() => window.scrollBy(0, 1));
+  await expect(impact).not.toHaveAttribute("data-scroll-state", "stationary");
 });
