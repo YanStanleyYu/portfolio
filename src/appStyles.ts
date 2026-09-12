@@ -84,7 +84,7 @@ nav a:hover, nav a:focus-visible { color: var(--blue); }
 
 .hero {
   position: relative;
-  min-height: 49.375rem;
+  min-height: auto;
   overflow: hidden;
   color: var(--white);
   background:
@@ -303,7 +303,7 @@ footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3r
 @media (max-width: 56.25rem) {
   nav { gap: 1rem; }
   nav a:not(.nav-contact) { display: none; }
-  .hero { min-height: 46.25rem; }
+  .hero { min-height: auto; }
   .hero::before, .blueprint { left: 60%; }
   .metrics { grid-template-columns: 1fr 1fr; }
   .metrics article:nth-child(2) { border-right: 0; }
