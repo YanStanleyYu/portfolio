@@ -248,8 +248,25 @@ function App() {
           </div>
           <div className="tools-languages">
             <div>
-              <span className="mini-label">TOOLS</span>
-              <p>Wing Bid Pro · Microsoft Excel · Word · PowerPoint · Apple Pages · Numbers</p>
+              <span className="mini-label">TOOLS &amp; TECHNOLOGY</span>
+              <ul className="tool-list">
+                <li>
+                  <strong>Industry-specific software</strong>
+                  <span>WinBid Pro — storefront and curtain wall estimating, material optimization, and CAD shop drawing generation</span>
+                </li>
+                <li>
+                  <strong>Data analysis &amp; modeling</strong>
+                  <span>Advanced Microsoft Excel — dynamic estimating templates, complex formula architecture, and material breakdowns</span>
+                </li>
+                <li>
+                  <strong>Enterprise collaboration</strong>
+                  <span>Microsoft 365 ecosystem — Word, PowerPoint, and cloud-based document management</span>
+                </li>
+                <li>
+                  <strong>Operating environments</strong>
+                  <span>Multi-platform proficiency across Windows and Apple macOS/iOS ecosystems</span>
+                </li>
+              </ul>
             </div>
             <div>
               <span className="mini-label">LANGUAGES</span>
