@@ -24,6 +24,7 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
     return {
       viewportWidth: window.innerWidth,
       horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+      headerPosition: getComputedStyle(header).position,
       availabilityPosition: getComputedStyle(availability).position,
       actionAvailabilityGap: availabilityRect.top - actionsRect.bottom,
       availabilityContained: availabilityRect.bottom <= heroRect.bottom,
@@ -33,6 +34,7 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
   });
 
   expect(layout.horizontalOverflow).toBe(false);
+  expect(layout.headerPosition).toBe("sticky");
 
   if (layout.viewportWidth <= 760) {
     expect(layout.availabilityPosition).toBe("static");
@@ -49,6 +51,10 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
     maxDiffPixelRatio: testInfo.project.name === "mobile" ? 0.1 : 0.08,
     threshold: 0.3,
   });
+
+  await page.evaluate(() => window.scrollTo(0, 1000));
+  const stickyHeader = await page.locator(".site-header").boundingBox();
+  expect(stickyHeader?.y).toBe(0);
 
   expect(testInfo.errors).toHaveLength(0);
 });

@@ -2,6 +2,11 @@ import { useEffect } from "react";
 
 export type ScrollDirection = "down" | "up";
 
+export const revealObserverOptions: IntersectionObserverInit = {
+  rootMargin: "-25% 0% -25% 0%",
+  threshold: 0.01,
+};
+
 export function getScrollDirection(
   previousPosition: number,
   currentPosition: number,
@@ -45,6 +50,15 @@ export function useScrollReveal() {
         });
       }
 
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1) {
+        const finalSection = sections.at(-1);
+
+        if (finalSection) {
+          finalSection.dataset.scrollDirection = direction;
+          finalSection.dataset.scrollState = "visible";
+        }
+      }
+
       previousPosition = currentPosition;
     };
 
@@ -72,10 +86,7 @@ export function useScrollReveal() {
           section.dataset.scrollState = "hidden";
         }
       });
-    }, {
-      rootMargin: "0%",
-      threshold: 0.01,
-    });
+    }, revealObserverOptions);
 
     sections.forEach((section) => observer.observe(section));
 

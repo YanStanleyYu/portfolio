@@ -45,16 +45,18 @@ h1, h2, h3, p, a, span { overflow-wrap: anywhere; }
 .skip-link:focus { top: 1rem; }
 
 .site-header {
-  position: absolute;
-  z-index: 10;
+  position: sticky;
+  z-index: 20;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(calc(100% - 3rem), var(--max));
+  width: 100%;
   min-height: 5.375rem;
+  margin-bottom: -5.375rem;
+  padding: 0 max(1.5rem, calc((100vw - var(--max)) / 2));
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: rgba(7,22,36,.94);
+  backdrop-filter: blur(.75rem);
   border-bottom: 0.0625rem solid rgba(255,255,255,.18);
   color: var(--white);
 }
@@ -63,6 +65,7 @@ h1, h2, h3, p, a, span { overflow-wrap: anywhere; }
   align-items: center;
   gap: .8rem;
   font-family: "Manrope", sans-serif;
+  font-size: x-large;
   font-weight: 800;
   letter-spacing: .1em;
   text-decoration: none;
@@ -332,8 +335,7 @@ footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3r
 }
 
 @media (max-width: 38.75rem) {
-  .site-header { width: calc(100% - 2rem); }
-  .brand { font-size: .85rem; }
+  .site-header { width: 100%; padding: 0 1rem; }
   .hero { min-height: auto; }
   .hero::before, .blueprint { left: 72%; opacity: .45; }
   .hero-content { width: calc(100% - 2rem); padding-top: 8.75rem; }
