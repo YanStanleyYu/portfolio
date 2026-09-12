@@ -91,13 +91,13 @@ const experience = [
   {
     dates: "2022—Present",
     company: "Pro Surface · Atlanta, Georgia",
-    title: "Chief Estimator & Chief Project Coordinator",
+    title: "Director of Preconstruction & Operations",
     description: "Leads commercial storefront, window, and glazing estimates from scope review and proposal development through supplier pricing and award handoff. Partners with project delivery on technical resolution, procurement, fabrication, installation, and warranty—supporting larger, more complex pursuits.",
   },
   {
     dates: "2013—2022",
     company: "Glass Inc. · Atlanta, Georgia",
-    title: "Cost Engineer / Project Management",
+    title: "Senior Preconstruction Manager & Estimator",
     description: "Developed budgets, quotations, and proposals for commercial glass projects, then coordinated vendors, purchasing, schedules, installation support, closeout, and contractor relationships to protect the awarded scope.",
   },
 ];

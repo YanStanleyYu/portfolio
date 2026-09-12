@@ -16,6 +16,8 @@ describe("portfolio copy", () => {
     expect(screen.getByRole("heading", { name: /Competitive bids\.\s*Clear ownership\./ })).toBeTruthy();
     expect(screen.getByRole("heading", { name: /Operational improvements\s*that compound\./ })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Field-informed leadership." })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Director of Preconstruction & Operations" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Senior Preconstruction Manager & Estimator" })).toBeTruthy();
     expect(screen.queryByText("Accountable handoffs.")).toBeNull();
   });
 });
