@@ -196,16 +196,17 @@ function App() {
 
           <div className="hero-content">
             <p className="eyebrow">
-              <span /> Chief Estimator · Commercial storefront · windows ·
-              glazing
+              <span /> Commercial storefront · glass · glazing
             </p>
             <h1>Certainty in every estimate. Confidence in every build.</h1>
             <p className="hero-copy">
-              Multilingual preconstruction and operations leader bridging
-              complex engineering requirements with executive project execution.
-              Yan optimizes supply-chain workflows, strengthens vendor networks,
-              and builds high-efficiency digital systems that protect budgets
-              and accelerate delivery.
+              Yan Stanley Yu is a multilingual preconstruction and operations
+              leader who bridges complex engineering requirements with executive
+              project execution. Expert at transforming intricate drawings,
+              project scopes, supplier pricing, and field realities into
+              buildable commercial projects, he builds high-efficiency digital
+              workflows and robust vendor networks that systematically protect
+              profitability, eliminate risk, and accelerate delivery.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">
@@ -404,10 +405,22 @@ function App() {
             <div>
               <span className="mini-label">LANGUAGES</span>
               <dl className="language-proficiency">
-                <div><dt>English</dt><dd>Proficient</dd></div>
-                <div><dt>Mandarin</dt><dd>Native</dd></div>
-                <div><dt>Cantonese</dt><dd>Native</dd></div>
-                <div><dt>Hakka</dt><dd>Native</dd></div>
+                <div>
+                  <dt>English</dt>
+                  <dd>Proficient</dd>
+                </div>
+                <div>
+                  <dt>Mandarin</dt>
+                  <dd>Native</dd>
+                </div>
+                <div>
+                  <dt>Cantonese</dt>
+                  <dd>Native</dd>
+                </div>
+                <div>
+                  <dt>Hakka</dt>
+                  <dd>Native</dd>
+                </div>
               </dl>
             </div>
           </div>
@@ -426,7 +439,7 @@ function App() {
               </a>
             </div>
             <div className="target-roles" aria-label="Target leadership roles">
-              <span>Preconstruction Director</span>
+              <span>Preconstruction Manager</span>
               <span>Director of Preconstruction &amp; Estimating</span>
               <span>Chief Estimator</span>
               <span>Director of Operations / General Manager</span>
