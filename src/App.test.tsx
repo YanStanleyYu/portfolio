@@ -20,7 +20,8 @@ describe("portfolio copy", () => {
     expect(screen.getByRole("heading", { name: "Field-informed leadership." })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Director of Preconstruction & Operations" })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Senior Preconstruction Manager & Estimator" })).toBeTruthy();
-    expect(screen.getByText(/leader bridging complex engineering with executive execution/)).toBeTruthy();
+    expect(screen.getByText("Yan Stanley Yu", { selector: ".hero-copy strong" })).toBeTruthy();
+    expect(screen.getByText(/multilingual estimator and preconstruction leader bridging complex engineering/)).toBeTruthy();
     expect(screen.getByText(/vendor networks that protect margins, eliminate risk, and accelerate delivery/)).toBeTruthy();
     expect(screen.getByText(/reported efficiency gain of about 75%/)).toBeTruthy();
     expect(screen.getByText("Preconstruction Manager")).toBeTruthy();

@@ -208,12 +208,12 @@ function App() {
             </p>
             <h1>Certainty in every estimate. Confidence in every build.</h1>
             <p className="hero-copy">
-              Yan Stanley Yu is a multilingual preconstruction and operations
-              leader bridging complex engineering with executive execution.
-              Expert at turning drawings, scopes, and pricing into buildable
-              commercial projects—building the high-efficiency workflows and
-              vendor networks that protect margins, eliminate risk, and
-              accelerate delivery.
+              <strong>Yan Stanley Yu</strong> is a multilingual estimator and
+              preconstruction leader bridging complex engineering with executive
+              execution. Expert at turning drawings, scopes, and pricing into
+              buildable commercial projects—building the high-efficiency
+              workflows and vendor networks that protect margins, eliminate
+              risk, and accelerate delivery.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">
