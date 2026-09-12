@@ -280,8 +280,14 @@ function App() {
         <section className="contact-section" id="contact" data-scroll-reveal="rise">
           <p className="section-number">05 / CONTACT</p>
           <div className="contact-main">
-            <p>For Chief Estimator and senior commercial glazing estimating opportunities:</p>
+            <p>For leadership opportunities spanning preconstruction strategy, estimating, and construction operations:</p>
             <a href="mailto:stanleyu9898@gmail.com">stanleyu9898@gmail.com <span aria-hidden="true">↗</span></a>
+          </div>
+          <div className="target-roles" aria-label="Target leadership roles">
+            <span>Preconstruction Director</span>
+            <span>Director of Preconstruction &amp; Estimating</span>
+            <span>Chief Estimator</span>
+            <span>Director of Operations / General Manager</span>
           </div>
           <div className="contact-meta">
             <span>Cumming, Georgia</span>

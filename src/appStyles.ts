@@ -276,6 +276,8 @@ section:not(.hero):not(.contact-section) { padding: 8rem max(1.5rem, calc((100vw
 .contact-main { display: grid; grid-template-columns: 1fr 3fr; gap: 2rem; align-items: end; margin: 3rem 0 4rem; }
 .contact-main p { max-width: 16.875rem; margin: 0; }
 .contact-main > a { font-family: "Manrope"; font-size: clamp(1.7rem, 4.1vw, 3.6rem); font-weight: 700; letter-spacing: -.055em; text-decoration-thickness: 0.0625rem; text-underline-offset: .25em; overflow-wrap: anywhere; }
+.target-roles { display: flex; flex-wrap: wrap; gap: .65rem; margin-bottom: 3rem; }
+.target-roles span { padding: .55rem .8rem; border: 0.0625rem solid rgba(7,22,36,.4); font-size: .78rem; font-weight: 700; letter-spacing: .04em; }
 .contact-meta { display: flex; justify-content: flex-end; gap: 2.5rem; padding-top: 1.5rem; border-top: 0.0625rem solid rgba(7,22,36,.4); font-size: .86rem; font-weight: 600; }
 footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3rem max(1.5rem, calc((100vw - var(--max)) / 2)); background: var(--ink); color: #8fa3ad; font-size: .67rem; letter-spacing: .13em; text-transform: uppercase; }
 

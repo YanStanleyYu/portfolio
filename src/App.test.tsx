@@ -20,6 +20,10 @@ describe("portfolio copy", () => {
     expect(screen.getByRole("heading", { name: "Senior Preconstruction Manager & Estimator" })).toBeTruthy();
     expect(screen.getByText(/Multilingual preconstruction and operations leader/)).toBeTruthy();
     expect(screen.getByText(/reported efficiency gain of about 75%/)).toBeTruthy();
+    expect(screen.getByText("Preconstruction Director")).toBeTruthy();
+    expect(screen.getByText("Director of Preconstruction & Estimating")).toBeTruthy();
+    expect(screen.getByText("Chief Estimator", { selector: ".target-roles span" })).toBeTruthy();
+    expect(screen.getByText("Director of Operations / General Manager")).toBeTruthy();
     expect(screen.queryByText("Accountable handoffs.")).toBeNull();
   });
 });
