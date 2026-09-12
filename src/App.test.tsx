@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import App from "./App";
 import { appStyleText, viewport } from "./appStyles";
 import { globalStyleText } from "./globalStyles";
-import { getScrollDirection } from "./useScrollReveal";
+import { getRevealOpacity, getScrollDirection, revealMotion } from "./useScrollReveal";
 
 afterEach(cleanup);
 
@@ -111,7 +111,12 @@ describe("section reveal animation", () => {
     variants.slice(1).forEach((variant, index) => {
       expect(variant).not.toBe(variants[index]);
     });
-    expect(appStyleText).toContain("opacity: var(--reveal-progress, 0)");
+    expect(revealMotion.minimumOpacity).toBe(0.18);
+    expect(revealMotion.impactRiseDistance).toBe(1);
+    expect(getRevealOpacity(0)).toBe(0.18);
+    expect(getRevealOpacity(0.5)).toBeCloseTo(0.59);
+    expect(getRevealOpacity(1)).toBe(1);
+    expect(appStyleText).toContain("opacity: var(--reveal-opacity, .18)");
     expect(appStyleText).toContain("translate3d(var(--reveal-x, 0rem), var(--reveal-y, 0rem), 0)");
     expect(appStyleText).toContain("opacity .52s cubic-bezier(.2, .8, .2, 1)");
   });

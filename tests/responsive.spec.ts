@@ -161,3 +161,31 @@ test("does not update reveal state without a real scroll change", async ({ page 
   await page.evaluate(() => window.scrollBy(0, 1));
   await expect(impact).not.toHaveAttribute("data-scroll-state", "stationary");
 });
+
+test("keeps the Impact heading visible at the bottom of a tall viewport", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop");
+
+  await page.setViewportSize({ width: 1173, height: 979 });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
+
+  const impactState = await page.locator("#impact").evaluate((section) => {
+    const heading = section.querySelector<HTMLElement>(".section-intro");
+
+    if (!heading) {
+      throw new Error("Impact heading was not found");
+    }
+
+    return {
+      opacity: Number(getComputedStyle(section).opacity),
+      riseOffset: Math.abs(Number(section.style.getPropertyValue("--reveal-y").replace("rem", ""))),
+      headingTop: heading.getBoundingClientRect().top,
+      viewportHeight: window.innerHeight,
+    };
+  });
+
+  expect(impactState.opacity).toBeGreaterThanOrEqual(0.18);
+  expect(impactState.riseOffset).toBeLessThanOrEqual(1);
+  expect(impactState.headingTop).toBeLessThan(impactState.viewportHeight);
+});

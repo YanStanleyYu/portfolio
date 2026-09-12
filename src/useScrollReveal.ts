@@ -7,6 +7,12 @@ export const revealViewportRange = {
   fullBoundary: 0.5,
 } as const;
 
+export const revealMotion = {
+  minimumOpacity: 0.18,
+  riseDistance: 3,
+  impactRiseDistance: 1,
+} as const;
+
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
 export function getScrollDirection(
@@ -39,6 +45,12 @@ export function getRevealProgress(
   return Math.min(enteringProgress, leavingProgress);
 }
 
+export function getRevealOpacity(progress: number) {
+  const boundedProgress = clamp(progress);
+
+  return revealMotion.minimumOpacity + (1 - revealMotion.minimumOpacity) * boundedProgress;
+}
+
 function getStableBounds(section: HTMLElement) {
   let documentTop = 0;
   let current: HTMLElement | null = section;
@@ -60,13 +72,17 @@ function getStableBounds(section: HTMLElement) {
 function setRevealMotion(section: HTMLElement, progress: number, direction: ScrollDirection) {
   const roundedProgress = Number(progress.toFixed(3));
   const distance = 1 - roundedProgress;
+  const opacity = getRevealOpacity(roundedProgress);
   const variant = section.dataset.scrollReveal;
   let x = 0;
   let y = 0;
   let scale = 1;
 
   if (variant === "rise") {
-    y = (direction === "down" ? 3 : -3) * distance;
+    const riseDistance = section.classList.contains("impact-section")
+      ? revealMotion.impactRiseDistance
+      : revealMotion.riseDistance;
+    y = (direction === "down" ? riseDistance : -riseDistance) * distance;
   } else if (variant === "slide-left") {
     x = (direction === "down" ? -2.5 : 2.5) * distance;
   } else if (variant === "slide-right") {
@@ -79,6 +95,7 @@ function setRevealMotion(section: HTMLElement, progress: number, direction: Scro
   section.dataset.scrollState =
     roundedProgress >= 1 ? "visible" : roundedProgress <= 0 ? "hidden" : "revealing";
   section.style.setProperty("--reveal-progress", roundedProgress.toFixed(3));
+  section.style.setProperty("--reveal-opacity", opacity.toFixed(3));
   section.style.setProperty("--reveal-x", `${x.toFixed(3)}rem`);
   section.style.setProperty("--reveal-y", `${y.toFixed(3)}rem`);
   section.style.setProperty("--reveal-scale", scale.toFixed(3));

@@ -211,7 +211,7 @@ h1 {
 
 .impact-section { padding: 4rem 2rem; }
 .scroll-reveal-ready [data-scroll-reveal] {
-  opacity: var(--reveal-progress, 0);
+  opacity: var(--reveal-opacity, .18);
   transform:
     translate3d(var(--reveal-x, 0rem), var(--reveal-y, 0rem), 0)
     scale(var(--reveal-scale, 1));
