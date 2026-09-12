@@ -2,10 +2,12 @@ import { useEffect } from "react";
 
 export type ScrollDirection = "down" | "up";
 
-export const revealObserverOptions: IntersectionObserverInit = {
-  rootMargin: "-25% 0% -25% 0%",
-  threshold: 0.01,
-};
+export const revealViewportRange = {
+  hiddenBoundary: 0.25,
+  fullBoundary: 0.5,
+} as const;
+
+const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
 export function getScrollDirection(
   previousPosition: number,
@@ -19,6 +21,49 @@ export function getScrollDirection(
   return currentPosition > previousPosition ? "down" : "up";
 }
 
+export function getRevealProgress(
+  sectionTop: number,
+  sectionBottom: number,
+  viewportHeight: number,
+) {
+  if (viewportHeight <= 0) {
+    return 1;
+  }
+
+  const hiddenLine = viewportHeight * revealViewportRange.hiddenBoundary;
+  const fullLine = viewportHeight * revealViewportRange.fullBoundary;
+  const revealDistance = fullLine - hiddenLine;
+  const enteringProgress = clamp((viewportHeight - hiddenLine - sectionTop) / revealDistance);
+  const leavingProgress = clamp((sectionBottom - hiddenLine) / revealDistance);
+
+  return Math.min(enteringProgress, leavingProgress);
+}
+
+function setRevealMotion(section: HTMLElement, progress: number, direction: ScrollDirection) {
+  const distance = 1 - progress;
+  const variant = section.dataset.scrollReveal;
+  let x = 0;
+  let y = 0;
+  let scale = 1;
+
+  if (variant === "rise") {
+    y = (direction === "down" ? 3 : -3) * distance;
+  } else if (variant === "slide-left") {
+    x = (direction === "down" ? -2.5 : 2.5) * distance;
+  } else if (variant === "slide-right") {
+    x = (direction === "down" ? 2.5 : -2.5) * distance;
+  } else if (variant === "scale") {
+    scale = 1 + (direction === "down" ? -0.04 : 0.04) * distance;
+  }
+
+  section.dataset.scrollDirection = direction;
+  section.dataset.scrollState = progress >= 1 ? "visible" : progress <= 0 ? "hidden" : "revealing";
+  section.style.setProperty("--reveal-progress", progress.toFixed(3));
+  section.style.setProperty("--reveal-x", `${x.toFixed(3)}rem`);
+  section.style.setProperty("--reveal-y", `${y.toFixed(3)}rem`);
+  section.style.setProperty("--reveal-scale", scale.toFixed(3));
+}
+
 export function useScrollReveal() {
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-scroll-reveal]"));
@@ -29,70 +74,49 @@ export function useScrollReveal() {
 
     document.documentElement.classList.add("scroll-reveal-ready");
 
+    let animationFrame = 0;
     let previousPosition = window.scrollY;
-    let direction: ScrollDirection = "down";
+    let scrollDirection: ScrollDirection = "down";
 
-    sections.forEach((section) => {
-      section.dataset.scrollDirection = direction;
-      section.dataset.scrollState = "hidden";
-    });
+    const updateSections = () => {
+      const viewportHeight = window.innerHeight;
+      const viewportCenter = viewportHeight * revealViewportRange.fullBoundary;
+
+      sections.forEach((section) => {
+        const bounds = section.getBoundingClientRect();
+        const progress = getRevealProgress(bounds.top, bounds.bottom, viewportHeight);
+        const locationDirection: ScrollDirection =
+          bounds.top + bounds.height / 2 >= viewportCenter ? "down" : "up";
+
+        setRevealMotion(section, progress, progress < 1 ? locationDirection : scrollDirection);
+      });
+
+      animationFrame = 0;
+    };
+
+    const scheduleUpdate = () => {
+      if (animationFrame === 0) {
+        animationFrame = window.requestAnimationFrame(updateSections);
+      }
+    };
 
     const handleScroll = () => {
       const currentPosition = window.scrollY;
-      const nextDirection = getScrollDirection(previousPosition, currentPosition, direction);
-
-      if (nextDirection !== direction) {
-        direction = nextDirection;
-        sections.forEach((section) => {
-          if (section.dataset.scrollState !== "visible") {
-            section.dataset.scrollDirection = direction;
-          }
-        });
-      }
-
-      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1) {
-        const finalSection = sections.at(-1);
-
-        if (finalSection) {
-          finalSection.dataset.scrollDirection = direction;
-          finalSection.dataset.scrollState = "visible";
-        }
-      }
-
+      scrollDirection = getScrollDirection(previousPosition, currentPosition, scrollDirection);
       previousPosition = currentPosition;
+      scheduleUpdate();
     };
 
+    updateSections();
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    if (!("IntersectionObserver" in window)) {
-      sections.forEach((section) => {
-        section.dataset.scrollState = "visible";
-      });
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        document.documentElement.classList.remove("scroll-reveal-ready");
-      };
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const section = entry.target as HTMLElement;
-
-        if (entry.isIntersecting) {
-          section.dataset.scrollDirection = direction;
-          section.dataset.scrollState = "visible";
-        } else {
-          section.dataset.scrollState = "hidden";
-        }
-      });
-    }, revealObserverOptions);
-
-    sections.forEach((section) => observer.observe(section));
+    window.addEventListener("resize", scheduleUpdate);
 
     return () => {
-      observer.disconnect();
+      if (animationFrame !== 0) {
+        window.cancelAnimationFrame(animationFrame);
+      }
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", scheduleUpdate);
       document.documentElement.classList.remove("scroll-reveal-ready");
     };
   }, []);

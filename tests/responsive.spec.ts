@@ -58,3 +58,24 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
 
   expect(testInfo.errors).toHaveLength(0);
 });
+
+test("links section reveal progress to its viewport position", async ({ page }) => {
+  await page.goto("/");
+
+  const setSectionTop = async (viewportRatio: number) => {
+    await page.locator("#projects").evaluate((section, ratio) => {
+      const documentTop = section.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo(0, documentTop - window.innerHeight * ratio);
+    }, viewportRatio);
+    await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
+    return page.locator("#projects").evaluate((section) =>
+      Number(section.style.getPropertyValue("--reveal-progress")),
+    );
+  };
+
+  expect(await setSectionTop(0.75)).toBeCloseTo(0, 1);
+  expect(await setSectionTop(0.625)).toBeCloseTo(0.5, 1);
+  expect(await setSectionTop(0.5)).toBeCloseTo(1, 1);
+  expect(await setSectionTop(0.625)).toBeCloseTo(0.5, 1);
+  expect(await setSectionTop(0.75)).toBeCloseTo(0, 1);
+});

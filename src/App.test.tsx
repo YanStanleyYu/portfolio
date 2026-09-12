@@ -84,9 +84,9 @@ describe("section reveal animation", () => {
     variants.slice(1).forEach((variant, index) => {
       expect(variant).not.toBe(variants[index]);
     });
-    expect(appStyleText).toContain('[data-scroll-direction="down"]');
-    expect(appStyleText).toContain('[data-scroll-direction="up"]');
-    expect(appStyleText).toContain("opacity .42s cubic-bezier(.2, .8, .2, 1)");
+    expect(appStyleText).toContain("opacity: var(--reveal-progress, 0)");
+    expect(appStyleText).toContain("translate3d(var(--reveal-x, 0rem), var(--reveal-y, 0rem), 0)");
+    expect(appStyleText).toContain("opacity .52s cubic-bezier(.2, .8, .2, 1)");
   });
 
   it("animates hero content on initial page load", () => {
