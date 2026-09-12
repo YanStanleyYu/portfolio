@@ -451,7 +451,7 @@ function App() {
               <span>Chief Estimator</span>
             </div>
             <div className="contact-meta">
-              <span>Cumming, Georgia</span>
+              <span>Based in Georgia</span>
               <a href="tel:+17708869898">770-886-9898</a>
               <span>Remote opportunities</span>
             </div>
