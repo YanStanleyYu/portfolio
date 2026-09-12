@@ -18,24 +18,24 @@ type Project = {
 };
 
 const metrics: Metric[] = [
-  { value: "360", suffix: "°", description: "Scope ownership from estimating through closeout and warranty" },
-  { value: "$4.3", suffix: "M", description: "Scale of a major commercial glazing project coordinated" },
-  { value: "34", description: "Projects handled in 2025 across active client relationships" },
-  { value: "15", suffix: "+", description: "Supplier relationships supporting pricing and procurement" },
+  { value: "360", suffix: "°", description: "Estimating-to-closeout visibility across awarded scopes" },
+  { value: "$4.3", suffix: "M", description: "Commercial glazing project estimated and coordinated" },
+  { value: "34", description: "Active projects coordinated across client relationships in 2025" },
+  { value: "15", suffix: "+", description: "Supplier relationships strengthening pricing and procurement" },
 ];
 
 const capabilities = [
   {
-    title: "Estimating & proposals",
-    description: "Scope review, cost detail, quotations, bid proposals, general provisions, and pricing strategy for commercial storefront and glazing packages.",
+    title: "Bid strategy & scope control",
+    description: "Review drawings and scope, develop detailed costs, align supplier quotations, and prepare clear, competitive proposals for commercial storefront, window, and glazing packages.",
   },
   {
-    title: "Technical coordination",
-    description: "Submittals, approvals, field measurements, constructability questions, corrective solutions, and project-manager support.",
+    title: "Glazing constructability",
+    description: "Connect field measurements, system requirements, submittals, and approvals to identify technical conflicts early and keep proposed work buildable.",
   },
   {
-    title: "Procurement & delivery",
-    description: "Supplier negotiations, purchasing, material schedules, delivery coordination, warranty follow-up, and cost control.",
+    title: "Award-to-operations handoff",
+    description: "Carry bid intent into purchasing, fabrication, material schedules, delivery, installation support, punch-list resolution, warranty, and cost control.",
   },
 ];
 
@@ -44,18 +44,18 @@ const projects: Project[] = [
     category: "Education · Commercial glazing",
     label: "Featured project",
     name: "Cherokee High School",
-    description: "Coordinated estimating, proposal development, submittals, purchasing, supplier communication, and technical problem-solving alongside project management.",
+    description: "Owned estimating and proposal development, then coordinated submittals, purchasing, supplier communication, and technical resolution alongside project management.",
     value: "$4.3M",
-    scope: ["Estimating", "Submittals", "Procurement", "Technical support"],
+    scope: ["Bid development", "Scope coordination", "Procurement", "Technical resolution"],
     featured: true,
   },
   {
     category: "Mixed-use · Atlanta",
-    label: "End-to-end delivery",
+    label: "Successful bid · full handoff",
     name: "Atlantic Station",
-    description: "Prepared the successful bid and proposal, then coordinated purchasing, materials, suppliers, delivery, installers, applications, punch-list work, and warranty follow-up.",
+    description: "Built the successful bid and proposal, then carried scope and pricing intent into purchasing, supplier coordination, delivery, installation, punch-list work, and warranty follow-up.",
     value: "$1M",
-    scope: ["Bid award", "Scheduling", "Installation support", "Closeout"],
+    scope: ["Bid strategy", "Award handoff", "Installation support", "Closeout"],
   },
 ];
 
@@ -63,24 +63,24 @@ const improvements = [
   {
     marker: "A",
     kicker: "Digital workflow",
-    title: "From scattered paperwork to shared visibility.",
-    description: "Proposed and helped implement a digital operations system so project information could be accessed across the team without relying on paper files, repeated calls, or individual gatekeepers.",
+    title: "Made estimating and project data visible to the full team.",
+    description: "Proposed and helped implement a digital operations system that replaced scattered paper files with shared access to project information—reducing repeated calls and decision bottlenecks.",
     result: "~75%",
     resultLabel: "reported efficiency gain",
   },
   {
     marker: "B",
     kicker: "In-house fabrication",
-    title: "Faster response. Better cost and quality control.",
-    description: "Recommended building an internal storefront-frame fabrication capability and helped organize the workflow—reducing external lead time and increasing control over execution.",
+    title: "Brought storefront fabrication closer to cost control.",
+    description: "Recommended an internal storefront-frame fabrication capability and helped organize the workflow—reducing external lead time while improving control over cost, quality, and execution.",
     result: "30–40%",
     resultLabel: "estimated project savings",
   },
   {
     marker: "C",
     kicker: "Supplier negotiation",
-    title: "Protected $35K when post-order pricing changed.",
-    description: "",
+    title: "Defended the estimate when post-order pricing changed.",
+    description: "Negotiated through an unexpected supplier increase, preserved the quoted cost position, and avoided $35K in added expense.",
     result: "$35K",
     resultLabel: "cost avoided",
   },
@@ -91,13 +91,13 @@ const experience = [
     dates: "CURRENT ROLE",
     company: "Pro Surface · Atlanta area",
     title: "Chief Estimator & Chief Project Coordinator",
-    description: "Leads estimating and supports project delivery across client coordination, proposals, technical resolution, supplier relationships, procurement, fabrication, installation, and warranty. Helped the business expand its operational capacity and pursue larger projects.",
+    description: "Leads commercial storefront, window, and glazing estimates from scope review and proposal development through supplier pricing and award handoff. Partners with project delivery on technical resolution, procurement, fabrication, installation, and warranty—supporting larger, more complex pursuits.",
   },
   {
     dates: "PRIOR ROLE",
     company: "Glass Inc. · Atlanta, Georgia",
     title: "Cost Engineer / Project Management",
-    description: "Managed project budgeting, quotations, proposals, scheduling, vendor coordination, purchasing, installation support, closeout, and contractor relationships for commercial glass projects.",
+    description: "Developed budgets, quotations, and proposals for commercial glass projects, then coordinated vendors, purchasing, schedules, installation support, closeout, and contractor relationships to protect the awarded scope.",
   },
 ];
 
@@ -146,9 +146,9 @@ function App() {
           </div>
 
           <div className="hero-content">
-            <p className="eyebrow"><span /> Commercial storefront · windows · glazing</p>
-            <h1>Building certainty<br />into every estimate.</h1>
-            <p className="hero-copy">Chief Estimator and project coordination leader turning drawings, scope, supplier pricing, and field realities into buildable commercial projects.</p>
+            <p className="eyebrow"><span /> Chief Estimator · Commercial storefront · windows · glazing</p>
+            <h1>Win the right work.<br />Build it with confidence.</h1>
+            <p className="hero-copy">Chief Estimator translating drawings, scope, supplier pricing, constructability, and field conditions into complete, competitive glazing proposals—then carrying bid intent cleanly into operations.</p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">View selected work <span aria-hidden="true">↘</span></a>
               <a className="button button-secondary" href="mailto:stanleyu9898@gmail.com">Discuss an opportunity</a>
@@ -158,7 +158,7 @@ function App() {
           <aside className="availability" aria-label="Current position focus">
             <span className="status-dot" aria-hidden="true" />
             <div>
-              <strong>Open to remote leadership roles</strong>
+              <strong>Open to Chief Estimator opportunities</strong>
               <span>Based in Georgia</span>
             </div>
           </aside>
@@ -167,8 +167,8 @@ function App() {
         <section className="impact-section" id="impact">
           <SectionHeading
             number="01 / IMPACT"
-            title="Estimate beyond the bid."
-            description="Yan connects preconstruction decisions to purchasing, fabrication, installation, closeout, and warranty—helping teams protect margin long after award."
+            title="A strong estimate protects the entire job."
+            description="Yan connects bid strategy, scope coverage, supplier pricing, and constructability to purchasing, fabrication, installation, closeout, and warranty—protecting margin from pursuit through delivery."
           />
 
           <div className="metrics" aria-label="Career highlights">
@@ -192,7 +192,7 @@ function App() {
         </section>
 
         <section className="projects-section" id="projects">
-          <SectionHeading number="02 / SELECTED WORK" title={<>Complex projects.<br />Clear ownership.</>} light />
+          <SectionHeading number="02 / SELECTED WORK" title={<>Competitive bids.<br />Accountable handoffs.</>} light />
           <div className="project-list">
             {projects.map((project) => (
               <article className={`project${project.featured ? " project-primary" : ""}`} key={project.name}>
@@ -216,7 +216,7 @@ function App() {
         </section>
 
         <section className="systems-section">
-          <SectionHeading number="03 / SYSTEMS" title={<>Operational improvements<br />that compound.</>} />
+          <SectionHeading number="03 / SYSTEMS" title={<>Estimating improvements<br />that protect margin.</>} />
           <div className="systems-layout">
             {improvements.map((improvement) => (
               <article className="system-story" key={improvement.marker}>
@@ -233,7 +233,7 @@ function App() {
         </section>
 
         <section className="experience-section" id="experience">
-          <SectionHeading number="04 / EXPERIENCE" title="Field-informed leadership." />
+          <SectionHeading number="04 / EXPERIENCE" title="Preconstruction leadership with field accountability." />
           <div className="timeline">
             {experience.map((role) => (
               <article key={role.dates}>
@@ -261,7 +261,7 @@ function App() {
         <section className="contact-section" id="contact">
           <p className="section-number">05 / CONTACT</p>
           <div className="contact-main">
-            <p>For Chief Estimator, Senior Estimator, or preconstruction leadership opportunities:</p>
+            <p>For Chief Estimator and senior commercial glazing estimating opportunities:</p>
             <a href="mailto:stanleyu9898@gmail.com">stanleyu9898@gmail.com <span aria-hidden="true">↗</span></a>
           </div>
           <div className="contact-meta">

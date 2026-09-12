@@ -1,6 +1,6 @@
 # Yan Yu Portfolio
 
-Responsive professional portfolio for Yan Yu, a Chief Estimator specializing in commercial storefront, windows, and glazing.
+Responsive professional portfolio for Yan Yu, a Chief Estimator focused on commercial storefront, windows, glazing, bid strategy, supplier pricing, and award-to-operations handoff.
 
 ## Development
 
