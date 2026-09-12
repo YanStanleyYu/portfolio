@@ -18,6 +18,8 @@ describe("portfolio copy", () => {
     expect(screen.getByRole("heading", { name: "Field-informed leadership." })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Director of Preconstruction & Operations" })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Senior Preconstruction Manager & Estimator" })).toBeTruthy();
+    expect(screen.getByText(/Multilingual preconstruction and operations leader/)).toBeTruthy();
+    expect(screen.getByText(/reported efficiency gain of about 75%/)).toBeTruthy();
     expect(screen.queryByText("Accountable handoffs.")).toBeNull();
   });
 });

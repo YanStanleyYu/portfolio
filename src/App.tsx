@@ -150,7 +150,7 @@ function App() {
           <div className="hero-content">
             <p className="eyebrow"><span /> Chief Estimator · Commercial storefront · windows · glazing</p>
             <h1>Win the right work.<br />Build it with confidence.</h1>
-            <p className="hero-copy">Chief Estimator translating drawings, scope, supplier pricing, constructability, and field conditions into complete, competitive glazing proposals—then carrying bid intent cleanly into operations.</p>
+            <p className="hero-copy">Multilingual preconstruction and operations leader bridging complex engineering requirements with executive project execution. Yan optimizes supply-chain workflows, strengthens vendor networks, and builds high-efficiency digital systems that protect budgets and accelerate delivery.</p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">View selected work <span aria-hidden="true">↘</span></a>
               <a className="button button-secondary" href="mailto:stanleyu9898@gmail.com">Discuss an opportunity</a>
@@ -170,7 +170,7 @@ function App() {
           <SectionHeading
             number="01 / IMPACT"
             title="A strong estimate protects the entire job."
-            description="Yan connects bid strategy, scope coverage, supplier pricing, and constructability to purchasing, fabrication, installation, closeout, and warranty—protecting margin from pursuit through delivery."
+            description="From the $4.3M Cherokee High School glazing project to in-house fabrication and cloud operations, Yan pairs field-informed technical problem-solving with disciplined estimating, procurement, and execution—supporting a reported efficiency gain of about 75% and estimated project savings of 30–40%."
           />
 
           <div className="metrics" aria-label="Career highlights">
