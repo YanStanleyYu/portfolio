@@ -156,7 +156,7 @@ function App() {
           <aside className="availability" aria-label="Current position focus">
             <span className="status-dot" aria-hidden="true" />
             <div>
-              <strong>Open to Chief Estimator opportunities</strong>
+              <strong>Open to remote opportunities</strong>
               <span>Based in Georgia</span>
             </div>
           </aside>
@@ -190,7 +190,7 @@ function App() {
         </section>
 
         <section className="projects-section" id="projects">
-          <SectionHeading number="02 / SELECTED WORK" title={<>Competitive bids.<br />Accountable handoffs.</>} light />
+          <SectionHeading number="02 / SELECTED WORK" title={<>Competitive bids.<br />Clear ownership.</>} light />
           <div className="project-list">
             {projects.map((project) => (
               <article className={`project${project.featured ? " project-primary" : ""}`} key={project.name}>
@@ -214,7 +214,7 @@ function App() {
         </section>
 
         <section className="systems-section">
-          <SectionHeading number="03 / SYSTEMS" title={<>Estimating improvements<br />that protect margin.</>} />
+          <SectionHeading number="03 / SYSTEMS" title={<>Operational improvements<br />that compound.</>} />
           <div className="systems-layout">
             {improvements.map((improvement) => (
               <article className="system-story" key={improvement.marker}>
@@ -231,7 +231,7 @@ function App() {
         </section>
 
         <section className="experience-section" id="experience">
-          <SectionHeading number="04 / EXPERIENCE" title="Preconstruction leadership with field accountability." />
+          <SectionHeading number="04 / EXPERIENCE" title="Field-informed leadership." />
           <div className="timeline">
             {experience.map((role) => (
               <article key={role.dates}>
