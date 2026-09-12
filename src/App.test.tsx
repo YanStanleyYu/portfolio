@@ -12,6 +12,7 @@ describe("portfolio copy", () => {
   it("keeps the approved recruiter-facing hero and project copy", () => {
     render(<App />);
 
+    expect(screen.getByRole("heading", { name: /Certainty in every estimate\.\s*Confidence in Every Build\./ })).toBeTruthy();
     expect(screen.getByText("Open to remote opportunities")).toBeTruthy();
     expect(screen.getByRole("heading", { name: /Competitive bids\.\s*Clear ownership\./ })).toBeTruthy();
     expect(screen.getByRole("heading", { name: /Operational improvements\s*that compound\./ })).toBeTruthy();

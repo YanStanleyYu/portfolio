@@ -149,7 +149,7 @@ function App() {
 
           <div className="hero-content">
             <p className="eyebrow"><span /> Chief Estimator · Commercial storefront · windows · glazing</p>
-            <h1>Win the right work.<br />Build it with confidence.</h1>
+            <h1>Certainty in every estimate.<br />Confidence in Every Build.</h1>
             <p className="hero-copy">Multilingual preconstruction and operations leader bridging complex engineering requirements with executive project execution. Yan optimizes supply-chain workflows, strengthens vendor networks, and builds high-efficiency digital systems that protect budgets and accelerate delivery.</p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">View selected work <span aria-hidden="true">↘</span></a>
