@@ -403,7 +403,12 @@ function App() {
             </div>
             <div>
               <span className="mini-label">LANGUAGES</span>
-              <p>English · Mandarin · Cantonese · Hakka</p>
+              <dl className="language-proficiency">
+                <div><dt>English</dt><dd>Proficient</dd></div>
+                <div><dt>Mandarin</dt><dd>Native</dd></div>
+                <div><dt>Cantonese</dt><dd>Native</dd></div>
+                <div><dt>Hakka</dt><dd>Native</dd></div>
+              </dl>
             </div>
           </div>
         </section>
