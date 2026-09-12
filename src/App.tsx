@@ -449,7 +449,6 @@ function App() {
               <span>Preconstruction Manager</span>
               <span>Director of Preconstruction &amp; Estimating</span>
               <span>Chief Estimator</span>
-              <span>Director of Operations / General Manager</span>
             </div>
             <div className="contact-meta">
               <span>Cumming, Georgia</span>
