@@ -159,7 +159,7 @@ function App() {
             <span className="status-dot" aria-hidden="true" />
             <div>
               <strong>Open to remote leadership roles</strong>
-              <span>Based in Cumming, Georgia</span>
+              <span>Based in Georgia</span>
             </div>
           </aside>
         </section>
