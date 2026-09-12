@@ -110,9 +110,14 @@ describe("section reveal animation", () => {
       .map((section) => section.dataset.scrollReveal);
 
     expect(variants).toHaveLength(6);
-    variants.slice(1).forEach((variant, index) => {
+    variants.slice(1, -1).forEach((variant, index) => {
       expect(variant).not.toBe(variants[index]);
     });
+    const contactSection = container.querySelector<HTMLElement>(".contact-section");
+    const contactContent = contactSection?.querySelector<HTMLElement>(".contact-content");
+
+    expect(contactSection?.dataset.scrollReveal).toBeUndefined();
+    expect(contactContent?.dataset.scrollReveal).toBe("rise");
     expect(revealMotion.minimumOpacity).toBe(0.18);
     expect(revealMotion.impactRiseDistance).toBe(1);
     expect(getRevealOpacity(0)).toBe(0.18);
