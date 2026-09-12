@@ -196,7 +196,7 @@ function App() {
 
           <div className="hero-content">
             <p className="eyebrow">
-              <span /> Commercial storefront · glass · glazing
+              <span /> Commercial storefront · windows · glazing
             </p>
             <h1>Certainty in every estimate. Confidence in every build.</h1>
             <p className="hero-copy">
@@ -454,7 +454,7 @@ function App() {
       </main>
 
       <footer>
-        <span>YAN YU · CHIEF ESTIMATOR</span>
+        <span>YAN STANLEY YU · CHIEF ESTIMATOR & PRECONSTRUCTION LEADER</span>
         <span>Commercial storefront · windows · glazing</span>
       </footer>
     </>
