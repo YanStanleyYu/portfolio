@@ -194,8 +194,8 @@ section:not(.hero):not(.contact-section) { padding: 8rem max(1.5rem, calc((100vw
 .scroll-reveal-ready [data-scroll-reveal] {
   opacity: 0;
   transition:
-    opacity .72s cubic-bezier(.22, 1, .36, 1),
-    transform .72s cubic-bezier(.22, 1, .36, 1);
+    opacity .42s cubic-bezier(.2, .8, .2, 1),
+    transform .42s cubic-bezier(.2, .8, .2, 1);
   will-change: opacity, transform;
 }
 .scroll-reveal-ready [data-scroll-reveal="rise"][data-scroll-direction="down"] { transform: translateY(3rem); }

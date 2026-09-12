@@ -13,7 +13,7 @@ describe("portfolio copy", () => {
   it("keeps the approved recruiter-facing hero and project copy", () => {
     render(<App />);
 
-    expect(screen.getByRole("heading", { name: /Certainty in every estimate\.\s*Confidence in Every Build\./ })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Certainty in every estimate. Confidence in every Build." })).toBeTruthy();
     expect(screen.getByText("Open to remote opportunities")).toBeTruthy();
     expect(screen.getByRole("heading", { name: /Competitive bids\.\s*Clear ownership\./ })).toBeTruthy();
     expect(screen.getByRole("heading", { name: /Operational improvements\s*that compound\./ })).toBeTruthy();
@@ -78,5 +78,6 @@ describe("section reveal animation", () => {
     });
     expect(appStyleText).toContain('[data-scroll-direction="down"]');
     expect(appStyleText).toContain('[data-scroll-direction="up"]');
+    expect(appStyleText).toContain("opacity .42s cubic-bezier(.2, .8, .2, 1)");
   });
 });
