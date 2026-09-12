@@ -16,6 +16,7 @@ export const appStyleText = String.raw`
   --muted: #667480;
   --line: #ccd6db;
   --max: 77.5rem;
+  --hero-edge-gap: 3.375rem;
 }
 
 * { box-sizing: border-box; }
@@ -137,6 +138,7 @@ nav a:hover, nav a:focus-visible { color: var(--blue); }
   width: min(calc(100% - 3rem), var(--max));
   margin: 0 auto;
   padding-top: 8.75rem;
+  padding-bottom: var(--hero-edge-gap);
 }
 @keyframes hero-text-in {
   from { opacity: 0; transform: translateY(1.25rem); }
@@ -155,6 +157,7 @@ nav a:hover, nav a:focus-visible { color: var(--blue); }
   display: flex;
   align-items: center;
   gap: .75rem;
+  margin: 0;
   color: #b8d3df;
   font-size: .8rem;
   text-transform: uppercase;
@@ -318,13 +321,20 @@ footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3r
 }
 
 @media (max-width: ${viewport.tablet}) {
+  .hero { min-height: auto; padding-bottom: 3rem; }
+  .hero-content { padding-bottom: 0; }
+  .availability {
+    position: static;
+    width: min(calc(100% - 3rem), var(--max));
+    margin: 2rem auto 0;
+  }
   .contact-section { padding: 3rem 1.5rem; }
 }
 
 @media (max-width: 38.75rem) {
   .site-header { width: calc(100% - 2rem); }
   .brand { font-size: .85rem; }
-  .hero { min-height: 48.75rem; }
+  .hero { min-height: auto; }
   .hero::before, .blueprint { left: 72%; opacity: .45; }
   .hero-content { width: calc(100% - 2rem); padding-top: 8.75rem; }
   h1 { font-size: clamp(3.25rem, 16vw, 4.6rem); }

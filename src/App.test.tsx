@@ -59,6 +59,14 @@ describe("responsive styling", () => {
     expect(appStyleText).toContain("main, main > section { width: 100%; max-width: 100%; overflow-x: clip; }");
     expect(appStyleText).toContain(".contact-main > * { min-width: 0; }");
   });
+
+  it("keeps hero actions and availability separated responsively", () => {
+    expect(appStyleText).toContain("--hero-edge-gap: 3.375rem");
+    expect(appStyleText).toContain("padding-bottom: var(--hero-edge-gap)");
+    expect(appStyleText).toMatch(/\.eyebrow \{[\s\S]*?margin: 0;/);
+    expect(appStyleText).toMatch(/@media \(max-width: 47\.5rem\)[\s\S]*\.hero \{ min-height: auto; padding-bottom: 3rem; \}/);
+    expect(appStyleText).toMatch(/@media \(max-width: 47\.5rem\)[\s\S]*\.availability \{[\s\S]*position: static;[\s\S]*margin: 2rem auto 0;/);
+  });
 });
 
 describe("section reveal animation", () => {
