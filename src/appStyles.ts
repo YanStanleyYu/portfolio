@@ -29,6 +29,9 @@ body {
   line-height: 1.6;
 }
 a { color: inherit; }
+main, main > section { width: 100%; max-width: 100%; overflow-x: clip; }
+h1, h2, h3, p, a, span { overflow-wrap: anywhere; }
+.section-intro > *, .project-body > *, .system-story > *, .timeline article > *, .contact-main > * { min-width: 0; }
 .skip-link {
   position: absolute;
   left: 1rem;

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyles = createGlobalStyle`
+export const globalStyleText = String.raw`
 :root {
   font-family: "DM Sans", Arial, sans-serif;
   color: #071624;
@@ -12,11 +12,27 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { min-width: 20rem; margin: 0; }
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+#root { width: 100%; max-width: 100%; overflow-x: hidden; overflow-x: clip; }
 button, a { font: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
 `;
+
+export const GlobalStyles = createGlobalStyle`${globalStyleText}`;

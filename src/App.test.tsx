@@ -4,6 +4,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import App from "./App";
 import { appStyleText, viewport } from "./appStyles";
+import { globalStyleText } from "./globalStyles";
 import { getScrollDirection } from "./useScrollReveal";
 
 afterEach(cleanup);
@@ -49,6 +50,14 @@ describe("responsive styling", () => {
     expect(appStyleText).toMatch(/@media\s*\(max-width:\s*47\.5rem\)/);
     expect(appStyleText).toMatch(/\.contact-section\s*\{\s*padding:\s*3rem 1\.5rem;/);
     expect(appStyleText).not.toMatch(/\dpx\b/);
+  });
+
+  it("prevents horizontal overflow at every viewport width", () => {
+    expect(globalStyleText).toMatch(/html\s*\{[^}]*max-width:\s*100%;[^}]*overflow-x:\s*clip;/s);
+    expect(globalStyleText).toMatch(/body\s*\{[^}]*min-width:\s*0;[^}]*overflow-x:\s*clip;/s);
+    expect(globalStyleText).toMatch(/#root\s*\{[^}]*overflow-x:\s*clip;/s);
+    expect(appStyleText).toContain("main, main > section { width: 100%; max-width: 100%; overflow-x: clip; }");
+    expect(appStyleText).toContain(".contact-main > * { min-width: 0; }");
   });
 });
 
