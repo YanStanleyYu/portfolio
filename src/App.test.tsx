@@ -52,6 +52,33 @@ describe("responsive styling", () => {
     expect(appStyleText).not.toMatch(/\dpx\b/);
   });
 
+  it("uses fixed rem padding for every content section", () => {
+    const sectionClasses = [
+      "impact-section",
+      "systems-section",
+      "projects-section",
+      "experience-section",
+      "contact-section",
+    ];
+
+    sectionClasses.forEach((sectionClass) => {
+      const rules = Array.from(appStyleText.matchAll(/([^{}]+)\{([^{}]*)\}/g))
+        .filter(([, selectors]) =>
+          selectors.split(",").some((selector) => selector.trim() === `.${sectionClass}`),
+        )
+        .map(([, , declarations]) => declarations)
+        .filter((declarations) => /padding\s*:/.test(declarations));
+
+      expect(rules.length).toBeGreaterThan(0);
+      rules.forEach((declarations) => {
+        expect(declarations).not.toMatch(/padding\s*:[^;]*(?:calc|max)\(/);
+      });
+    });
+
+    expect(appStyleText).toContain(".impact-section { padding: 4rem 2rem; }");
+    expect(appStyleText).not.toContain("section:not(.hero):not(.contact-section)");
+  });
+
   it("prevents horizontal overflow at every viewport width", () => {
     expect(globalStyleText).toMatch(/html\s*\{[^}]*max-width:\s*100%;[^}]*overflow-x:\s*clip;/s);
     expect(globalStyleText).toMatch(/body\s*\{[^}]*min-width:\s*0;[^}]*overflow-x:\s*clip;/s);

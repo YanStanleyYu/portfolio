@@ -209,7 +209,7 @@ h1 {
 .availability span { color: #a7bac4; font-size: .76rem; }
 .status-dot { flex: 0 0 auto; width: 0.4375rem; height: 0.4375rem; margin-top: .45rem; border-radius: 50%; background: var(--blue); }
 
-section:not(.hero):not(.contact-section) { padding: 8rem max(1.5rem, calc((100vw - var(--max)) / 2)); }
+.impact-section { padding: 4rem 2rem; }
 .scroll-reveal-ready [data-scroll-reveal] {
   opacity: var(--reveal-progress, 0);
   transform:
@@ -246,7 +246,7 @@ section:not(.hero):not(.contact-section) { padding: 8rem max(1.5rem, calc((100vw
 .capability p { margin: 0; color: var(--muted); }
 .capability-featured p { color: #b8c8d0; }
 
-.projects-section { background: var(--ink); color: var(--white); }
+.projects-section { padding: 8rem 2rem; background: var(--ink); color: var(--white); }
 .section-intro.light .section-number { color: var(--blue); }
 .project-list { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1.25rem; }
 .project { min-height: 27.5rem; display: flex; flex-direction: column; padding: 2rem; background: var(--ink-soft); border: 0.0625rem solid rgba(255,255,255,.12); }
@@ -261,7 +261,7 @@ section:not(.hero):not(.contact-section) { padding: 8rem max(1.5rem, calc((100vw
 .project-scope span { padding: .36rem .65rem; border: 0.0625rem solid rgba(255,255,255,.2); font-size: .72rem; }
 .project-primary .project-scope span { border-color: rgba(7,22,36,.3); }
 
-.systems-section { background: var(--white); }
+.systems-section { padding: 8rem 2rem; background: var(--white); }
 .systems-layout { border-top: 0.0625rem solid var(--line); }
 .system-story { display: grid; grid-template-columns: 4.375rem 1fr 13.75rem; gap: 2rem; align-items: center; padding: 2.7rem 0; border-bottom: 0.0625rem solid var(--line); }
 .system-marker { display: grid; place-items: center; width: 2.625rem; height: 2.625rem; border: 0.0625rem solid var(--line); font-family: "Manrope"; font-weight: 700; color: var(--blue-deep); }
@@ -271,7 +271,7 @@ section:not(.hero):not(.contact-section) { padding: 8rem max(1.5rem, calc((100vw
 .system-story > strong { font-family: "Manrope"; font-size: 3rem; text-align: right; letter-spacing: -.05em; }
 .system-story > strong small { display: block; color: var(--muted); font-family: "DM Sans"; font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
 
-.experience-section { background: #e8edef; }
+.experience-section { padding: 8rem 2rem; background: #e8edef; }
 .timeline { border-top: 0.0625rem solid #bac6cb; }
 .timeline article { display: grid; grid-template-columns: 1fr 1.5fr 2fr; gap: 2rem; padding: 2.4rem 0; border-bottom: 0.0625rem solid #bac6cb; }
 .timeline-date { font-size: .72rem; letter-spacing: .06em; font-weight: 400; color: var(--muted); }
@@ -325,6 +325,8 @@ footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3r
     width: min(calc(100% - 3rem), var(--max));
     margin: 2rem auto 0;
   }
+  .impact-section { padding: 4rem 1.5rem; }
+  .projects-section, .systems-section, .experience-section { padding: 6rem 1.5rem; }
   .contact-section { padding: 3rem 1.5rem; }
 }
 
@@ -337,7 +339,8 @@ footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3r
   .hero-copy { font-size: 1rem; }
   .button { width: 100%; }
   .availability { left: 1rem; right: auto; bottom: 1.75rem; }
-  section:not(.hero):not(.contact-section) { padding-top: 5rem; padding-bottom: 5rem; }
+  .impact-section { padding: 3.5rem 1.5rem; }
+  .projects-section, .systems-section, .experience-section { padding: 5rem 1.5rem; }
   .section-intro { grid-template-columns: 1fr; margin-bottom: 3rem; }
   .section-intro h2 { font-size: 2.4rem; }
   .metrics { grid-template-columns: 1fr; }

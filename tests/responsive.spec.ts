@@ -10,9 +10,17 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
     const eyebrow = document.querySelector<HTMLElement>(".eyebrow");
     const actions = document.querySelector<HTMLElement>(".hero-actions");
     const availability = document.querySelector<HTMLElement>(".availability");
+    const impact = document.querySelector<HTMLElement>(".impact-section");
+    const projects = document.querySelector<HTMLElement>(".projects-section");
+    const systems = document.querySelector<HTMLElement>(".systems-section");
+    const experience = document.querySelector<HTMLElement>(".experience-section");
+    const contact = document.querySelector<HTMLElement>(".contact-section");
 
-    if (!hero || !header || !eyebrow || !actions || !availability) {
-      throw new Error("Hero layout elements were not found");
+    if (
+      !hero || !header || !eyebrow || !actions || !availability ||
+      !impact || !projects || !systems || !experience || !contact
+    ) {
+      throw new Error("Responsive layout elements were not found");
     }
 
     const heroRect = hero.getBoundingClientRect();
@@ -25,6 +33,13 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
       viewportWidth: window.innerWidth,
       horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
       headerPosition: getComputedStyle(header).position,
+      sectionPadding: {
+        impact: getComputedStyle(impact).padding,
+        projects: getComputedStyle(projects).padding,
+        systems: getComputedStyle(systems).padding,
+        experience: getComputedStyle(experience).padding,
+        contact: getComputedStyle(contact).padding,
+      },
       availabilityPosition: getComputedStyle(availability).position,
       actionAvailabilityGap: availabilityRect.top - actionsRect.bottom,
       availabilityContained: availabilityRect.bottom <= heroRect.bottom,
@@ -35,6 +50,32 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
 
   expect(layout.horizontalOverflow).toBe(false);
   expect(layout.headerPosition).toBe("sticky");
+
+  if (layout.viewportWidth <= 620) {
+    expect(layout.sectionPadding).toEqual({
+      impact: "56px 24px",
+      projects: "80px 24px",
+      systems: "80px 24px",
+      experience: "80px 24px",
+      contact: "48px 24px",
+    });
+  } else if (layout.viewportWidth <= 760) {
+    expect(layout.sectionPadding).toEqual({
+      impact: "64px 24px",
+      projects: "96px 24px",
+      systems: "96px 24px",
+      experience: "96px 24px",
+      contact: "48px 24px",
+    });
+  } else {
+    expect(layout.sectionPadding).toEqual({
+      impact: "64px 32px",
+      projects: "128px 32px",
+      systems: "128px 32px",
+      experience: "128px 32px",
+      contact: "48px 32px",
+    });
+  }
 
   if (layout.viewportWidth <= 760) {
     expect(layout.availabilityPosition).toBe("static");
