@@ -237,7 +237,7 @@ section:not(.hero):not(.contact-section) { padding: 8rem max(24px, calc((100vw -
 .experience-section { background: #e8edef; }
 .timeline { border-top: 1px solid #bac6cb; }
 .timeline article { display: grid; grid-template-columns: 1fr 1.5fr 2fr; gap: 2rem; padding: 2.4rem 0; border-bottom: 1px solid #bac6cb; }
-.timeline-date { font-size: .74rem; letter-spacing: .15em; font-weight: 700; color: var(--blue-deep); }
+.timeline-date { font-size: .72rem; letter-spacing: .06em; font-weight: 400; color: var(--muted); }
 .timeline-role p { margin: 0 0 .45rem; color: var(--muted); font-size: .85rem; }
 .timeline-role h3 { margin: 0; font-size: 1.28rem; }
 .timeline-copy { margin: 0; color: var(--muted); }
