@@ -116,7 +116,9 @@ test("links section reveal progress to its viewport position", async ({ page }) 
       document.documentElement.style.scrollBehavior = "auto";
       window.scrollTo(0, documentTop - window.innerHeight * ratio);
     }, viewportRatio);
-    await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
+    await page.evaluate(() => new Promise<void>((resolve) =>
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+    ));
     return page.locator("#projects").evaluate((section) =>
       Number(section.style.getPropertyValue("--reveal-progress")),
     );
@@ -188,4 +190,41 @@ test("keeps the Impact heading visible at the bottom of a tall viewport", async 
   expect(impactState.opacity).toBeGreaterThanOrEqual(0.18);
   expect(impactState.riseOffset).toBeLessThanOrEqual(1);
   expect(impactState.headingTop).toBeLessThan(impactState.viewportHeight);
+});
+
+test("keeps the animated Experience section flush with the page background", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+
+  await page.locator("#experience").evaluate((section) => {
+    let documentTop = 0;
+    let current: HTMLElement | null = section as HTMLElement;
+
+    while (current) {
+      documentTop += current.offsetTop;
+      current = current.offsetParent as HTMLElement | null;
+    }
+
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, documentTop - window.innerHeight * 0.625);
+  });
+  await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
+
+  const appearance = await page.locator("#experience").evaluate((section) => {
+    const sectionStyle = getComputedStyle(section);
+    const bodyStyle = getComputedStyle(document.body);
+
+    return {
+      sectionBackground: sectionStyle.backgroundColor,
+      pageBackground: bodyStyle.backgroundColor,
+      borderWidth: sectionStyle.borderWidth,
+      outlineStyle: sectionStyle.outlineStyle,
+      progress: Number(section.style.getPropertyValue("--reveal-progress")),
+    };
+  });
+
+  expect(appearance.sectionBackground).toBe(appearance.pageBackground);
+  expect(appearance.borderWidth).toBe("0px");
+  expect(appearance.outlineStyle).toBe("none");
+  expect(appearance.progress).toBeCloseTo(0.5, 1);
 });

@@ -271,7 +271,7 @@ h1 {
 .system-story > strong { font-family: "Manrope"; font-size: 3rem; text-align: right; letter-spacing: -.05em; }
 .system-story > strong small { display: block; color: var(--muted); font-family: "DM Sans"; font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
 
-.experience-section { padding: 8rem 2rem; background: #e8edef; }
+.experience-section { padding: 8rem 2rem; background: var(--paper); }
 .timeline { border-top: 0.0625rem solid #bac6cb; }
 .timeline article { display: grid; grid-template-columns: 1fr 1.5fr 2fr; gap: 2rem; padding: 2.4rem 0; border-bottom: 0.0625rem solid #bac6cb; }
 .timeline-date { font-size: .72rem; letter-spacing: .06em; font-weight: 400; color: var(--muted); }
