@@ -112,14 +112,12 @@ nav a:hover, nav a:focus-visible { color: var(--blue); }
 }
 .blueprint::before { width: 1px; height: 72%; left: 14%; top: 10%; }
 .blueprint::after { height: 1px; width: 74%; left: 5%; top: 22%; }
-.blueprint-label, .measure {
+.measure {
   position: absolute;
   font-size: .62rem;
   letter-spacing: .18em;
   color: var(--blue);
 }
-.label-a { left: 7%; top: 8%; }
-.label-b { right: 8%; top: 46%; transform: rotate(90deg); }
 .measure { color: rgba(255,255,255,.48); }
 .measure-a { left: 30%; bottom: 12%; }
 .measure-b { left: 1%; top: 47%; transform: rotate(-90deg); }
@@ -128,7 +126,7 @@ nav a:hover, nav a:focus-visible { color: var(--blue); }
   z-index: 2;
   width: min(calc(100% - 48px), var(--max));
   margin: 0 auto;
-  padding-top: 202px;
+  padding-top: 150px;
 }
 .eyebrow {
   display: flex;
@@ -283,7 +281,7 @@ footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3r
   .brand { font-size: .85rem; }
   .hero { min-height: 780px; }
   .hero::before, .blueprint { left: 72%; opacity: .45; }
-  .hero-content { width: calc(100% - 32px); padding-top: 165px; }
+  .hero-content { width: calc(100% - 32px); padding-top: 150px; }
   h1 { font-size: clamp(3.25rem, 16vw, 4.6rem); }
   .hero-copy { font-size: 1rem; }
   .button { width: 100%; }

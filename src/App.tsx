@@ -139,8 +139,6 @@ function App() {
       <main id="main">
         <section className="hero" id="top">
           <div className="blueprint" aria-hidden="true">
-            <span className="blueprint-label label-a">FRAME / A-01</span>
-            <span className="blueprint-label label-b">GLAZING LINE</span>
             <span className="measure measure-a">24′–6″</span>
             <span className="measure measure-b">8′–0″</span>
           </div>
