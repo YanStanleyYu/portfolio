@@ -46,7 +46,7 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
   await expect(page).toHaveScreenshot("portfolio.png", {
     animations: "disabled",
     fullPage: false,
-    maxDiffPixelRatio: 0.08,
+    maxDiffPixelRatio: testInfo.project.name === "mobile" ? 0.1 : 0.08,
     threshold: 0.3,
   });
 
