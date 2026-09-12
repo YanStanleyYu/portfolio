@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
 :root {
   font-family: "DM Sans", Arial, sans-serif;
   color: #071624;
@@ -10,9 +13,10 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { min-width: 320px; margin: 0; }
+body { min-width: 20rem; margin: 0; }
 button, a { font: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+`;

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import "./App.css";
+import { AppStyles } from "./appStyles";
+import { useScrollReveal } from "./useScrollReveal";
 
 type Metric = {
   value: string;
@@ -119,8 +120,11 @@ function SectionHeading({ number, title, description, light = false }: {
 }
 
 function App() {
+  useScrollReveal();
+
   return (
     <>
+      <AppStyles />
       <a className="skip-link" href="#main">Skip to content</a>
 
       <header className="site-header">
@@ -137,7 +141,7 @@ function App() {
       </header>
 
       <main id="main">
-        <section className="hero" id="top">
+        <section className="hero" id="top" data-scroll-reveal="scale">
           <div className="blueprint" aria-hidden="true">
             <span className="measure measure-a">24′–6″</span>
             <span className="measure measure-b">8′–0″</span>
@@ -162,7 +166,7 @@ function App() {
           </aside>
         </section>
 
-        <section className="impact-section" id="impact">
+        <section className="impact-section" id="impact" data-scroll-reveal="rise">
           <SectionHeading
             number="01 / IMPACT"
             title="A strong estimate protects the entire job."
@@ -189,7 +193,7 @@ function App() {
           </div>
         </section>
 
-        <section className="projects-section" id="projects">
+        <section className="projects-section" id="projects" data-scroll-reveal="slide-left">
           <SectionHeading number="02 / SELECTED WORK" title={<>Competitive bids.<br />Clear ownership.</>} light />
           <div className="project-list">
             {projects.map((project) => (
@@ -213,7 +217,7 @@ function App() {
           </div>
         </section>
 
-        <section className="systems-section">
+        <section className="systems-section" id="systems" data-scroll-reveal="slide-right">
           <SectionHeading number="03 / SYSTEMS" title={<>Operational improvements<br />that compound.</>} />
           <div className="systems-layout">
             {improvements.map((improvement) => (
@@ -230,7 +234,7 @@ function App() {
           </div>
         </section>
 
-        <section className="experience-section" id="experience">
+        <section className="experience-section" id="experience" data-scroll-reveal="scale">
           <SectionHeading number="04 / EXPERIENCE" title="Field-informed leadership." />
           <div className="timeline">
             {experience.map((role) => (
@@ -273,7 +277,7 @@ function App() {
           </div>
         </section>
 
-        <section className="contact-section" id="contact">
+        <section className="contact-section" id="contact" data-scroll-reveal="rise">
           <p className="section-number">05 / CONTACT</p>
           <div className="contact-main">
             <p>For Chief Estimator and senior commercial glazing estimating opportunities:</p>
