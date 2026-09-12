@@ -180,51 +180,80 @@ test("keeps the Impact heading visible at the bottom of a tall viewport", async 
     }
 
     return {
-      opacity: Number(getComputedStyle(section).opacity),
+      containerOpacity: Number(getComputedStyle(section).opacity),
+      contentOpacity: Number(getComputedStyle(heading).opacity),
       riseOffset: Math.abs(Number(section.style.getPropertyValue("--reveal-y").replace("rem", ""))),
       headingTop: heading.getBoundingClientRect().top,
       viewportHeight: window.innerHeight,
     };
   });
 
-  expect(impactState.opacity).toBeGreaterThanOrEqual(0.18);
+  expect(impactState.containerOpacity).toBe(1);
+  expect(impactState.contentOpacity).toBeGreaterThanOrEqual(0.18);
   expect(impactState.riseOffset).toBeLessThanOrEqual(1);
   expect(impactState.headingTop).toBeLessThan(impactState.viewportHeight);
 });
 
-test("keeps the animated Experience section flush with the page background", async ({ page }) => {
+test("animates content without moving or fading section backgrounds", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
 
-  await page.locator("#experience").evaluate((section) => {
-    let documentTop = 0;
-    let current: HTMLElement | null = section as HTMLElement;
+  const expectedBackgrounds = {
+    projects: "rgb(7, 22, 36)",
+    systems: "rgb(255, 255, 255)",
+    experience: "rgb(244, 247, 248)",
+  } as const;
 
-    while (current) {
-      documentTop += current.offsetTop;
-      current = current.offsetParent as HTMLElement | null;
-    }
+  for (const [sectionId, expectedBackground] of Object.entries(expectedBackgrounds)) {
+    const section = page.locator(`#${sectionId}`);
 
-    document.documentElement.style.scrollBehavior = "auto";
-    window.scrollTo(0, documentTop - window.innerHeight * 0.625);
-  });
-  await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
+    await section.evaluate((element) => {
+      let documentTop = 0;
+      let current: HTMLElement | null = element as HTMLElement;
 
-  const appearance = await page.locator("#experience").evaluate((section) => {
-    const sectionStyle = getComputedStyle(section);
-    const bodyStyle = getComputedStyle(document.body);
+      while (current) {
+        documentTop += current.offsetTop;
+        current = current.offsetParent as HTMLElement | null;
+      }
 
-    return {
-      sectionBackground: sectionStyle.backgroundColor,
-      pageBackground: bodyStyle.backgroundColor,
-      borderWidth: sectionStyle.borderWidth,
-      outlineStyle: sectionStyle.outlineStyle,
-      progress: Number(section.style.getPropertyValue("--reveal-progress")),
-    };
-  });
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, documentTop - window.innerHeight * 0.625);
+    });
+    await page.evaluate(() => new Promise<void>((resolve) =>
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+    ));
+    await page.waitForTimeout(600);
 
-  expect(appearance.sectionBackground).toBe(appearance.pageBackground);
-  expect(appearance.borderWidth).toBe("0px");
-  expect(appearance.outlineStyle).toBe("none");
-  expect(appearance.progress).toBeCloseTo(0.5, 1);
+    const appearance = await section.evaluate((element) => {
+      const sectionStyle = getComputedStyle(element);
+      const content = element.firstElementChild;
+
+      if (!content) {
+        throw new Error("Animated section content was not found");
+      }
+
+      const contentStyle = getComputedStyle(content);
+
+      return {
+        background: sectionStyle.backgroundColor,
+        borderWidth: sectionStyle.borderWidth,
+        outlineStyle: sectionStyle.outlineStyle,
+        containerOpacity: Number(sectionStyle.opacity),
+        containerTransform: sectionStyle.transform,
+        contentOpacity: Number(contentStyle.opacity),
+        contentTransform: contentStyle.transform,
+        progress: Number((element as HTMLElement).style.getPropertyValue("--reveal-progress")),
+      };
+    });
+
+    expect(appearance.background).toBe(expectedBackground);
+    expect(appearance.borderWidth).toBe("0px");
+    expect(appearance.outlineStyle).toBe("none");
+    expect(appearance.containerOpacity).toBe(1);
+    expect(appearance.containerTransform).toBe("none");
+    expect(appearance.contentOpacity).toBeGreaterThan(0.18);
+    expect(appearance.contentOpacity).toBeLessThan(1);
+    expect(appearance.contentTransform).not.toBe("none");
+    expect(appearance.progress).toBeCloseTo(0.5, 1);
+  }
 });

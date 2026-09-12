@@ -211,6 +211,10 @@ h1 {
 
 .impact-section { padding: 4rem 2rem; }
 .scroll-reveal-ready [data-scroll-reveal] {
+  opacity: 1;
+  transform: none;
+}
+.scroll-reveal-ready [data-scroll-reveal] > * {
   opacity: var(--reveal-opacity, .18);
   transform:
     translate3d(var(--reveal-x, 0rem), var(--reveal-y, 0rem), 0)
@@ -360,7 +364,7 @@ footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3r
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .scroll-reveal-ready [data-scroll-reveal] {
+  .scroll-reveal-ready [data-scroll-reveal] > * {
     opacity: 1;
     transform: none;
     transition: none;
