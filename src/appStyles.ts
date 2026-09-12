@@ -138,6 +138,19 @@ nav a:hover, nav a:focus-visible { color: var(--blue); }
   margin: 0 auto;
   padding-top: 8.75rem;
 }
+@keyframes hero-text-in {
+  from { opacity: 0; transform: translateY(1.25rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-content > *, .availability {
+  opacity: 0;
+  animation: hero-text-in .42s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+.hero-content > :nth-child(1) { animation-delay: .08s; }
+.hero-content > :nth-child(2) { animation-delay: .14s; }
+.hero-content > :nth-child(3) { animation-delay: .2s; }
+.hero-content > :nth-child(4) { animation-delay: .26s; }
+.availability { animation-delay: .32s; }
 .eyebrow {
   display: flex;
   align-items: center;
@@ -342,6 +355,11 @@ footer { display: flex; justify-content: space-between; gap: 2rem; padding: 1.3r
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .hero-content > *, .availability {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }
 `;

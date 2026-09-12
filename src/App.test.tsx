@@ -80,4 +80,11 @@ describe("section reveal animation", () => {
     expect(appStyleText).toContain('[data-scroll-direction="up"]');
     expect(appStyleText).toContain("opacity .42s cubic-bezier(.2, .8, .2, 1)");
   });
+
+  it("animates hero content on initial page load", () => {
+    expect(appStyleText).toContain("@keyframes hero-text-in");
+    expect(appStyleText).toContain("animation: hero-text-in .42s cubic-bezier(.2, .8, .2, 1) forwards");
+    expect(appStyleText).toContain(".availability { animation-delay: .32s; }");
+    expect(appStyleText).toMatch(/@media \(prefers-reduced-motion: reduce\)[\s\S]*animation:\s*none;/);
+  });
 });
