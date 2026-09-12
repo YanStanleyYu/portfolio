@@ -18,7 +18,7 @@ type Project = {
 };
 
 const metrics: Metric[] = [
-  { value: "15", suffix: "+", description: "Years across estimating, cost engineering, and project coordination" },
+  { value: "360", suffix: "°", description: "Scope ownership from estimating through closeout and warranty" },
   { value: "$4.3", suffix: "M", description: "Scale of a major commercial glazing project coordinated" },
   { value: "34", description: "Projects handled in 2025 across active client relationships" },
   { value: "15", suffix: "+", description: "Supplier relationships supporting pricing and procurement" },
@@ -88,22 +88,16 @@ const improvements = [
 
 const experience = [
   {
-    dates: "2022—PRESENT",
+    dates: "CURRENT ROLE",
     company: "Pro Surface · Atlanta area",
     title: "Chief Estimator & Chief Project Coordinator",
     description: "Leads estimating and supports project delivery across client coordination, proposals, technical resolution, supplier relationships, procurement, fabrication, installation, and warranty. Helped the business expand its operational capacity and pursue larger projects.",
   },
   {
-    dates: "2013—2022",
+    dates: "PRIOR ROLE",
     company: "Glass Inc. · Atlanta, Georgia",
     title: "Cost Engineer / Project Management",
     description: "Managed project budgeting, quotations, proposals, scheduling, vendor coordination, purchasing, installation support, closeout, and contractor relationships for commercial glass projects.",
-  },
-  {
-    dates: "2010—2012",
-    company: "Independent contractor",
-    title: "Remodeling",
-    description: "Prepared proposals, negotiated scope and pricing, coordinated clients and installers, and completed interior and exterior renovation work.",
   },
 ];
 
@@ -154,7 +148,7 @@ function App() {
           <div className="hero-content">
             <p className="eyebrow"><span /> Commercial storefront · windows · glazing</p>
             <h1>Building certainty<br />into every estimate.</h1>
-            <p className="hero-copy">Chief Estimator and project coordination leader with 15+ years of experience turning drawings, scope, supplier pricing, and field realities into buildable commercial projects.</p>
+            <p className="hero-copy">Chief Estimator and project coordination leader turning drawings, scope, supplier pricing, and field realities into buildable commercial projects.</p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">View selected work <span aria-hidden="true">↘</span></a>
               <a className="button button-secondary" href="mailto:stanleyu9898@gmail.com">Discuss an opportunity</a>
