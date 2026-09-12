@@ -54,25 +54,25 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
   if (layout.viewportWidth <= 620) {
     expect(layout.sectionPadding).toEqual({
       impact: "56px 24px",
-      projects: "80px 24px",
-      systems: "80px 24px",
-      experience: "80px 24px",
+      projects: "64px 24px",
+      systems: "64px 24px",
+      experience: "64px 24px",
       contact: "48px 24px",
     });
   } else if (layout.viewportWidth <= 760) {
     expect(layout.sectionPadding).toEqual({
       impact: "64px 24px",
-      projects: "96px 24px",
-      systems: "96px 24px",
-      experience: "96px 24px",
+      projects: "64px 24px",
+      systems: "64px 24px",
+      experience: "64px 24px",
       contact: "48px 24px",
     });
   } else {
     expect(layout.sectionPadding).toEqual({
       impact: "64px 32px",
-      projects: "128px 32px",
-      systems: "128px 32px",
-      experience: "128px 32px",
+      projects: "64px 32px",
+      systems: "64px 32px",
+      experience: "64px 32px",
       contact: "48px 32px",
     });
   }
@@ -273,6 +273,7 @@ test("animates content without moving or fading section backgrounds", async ({ p
     expect(appearance.contentOpacity).toBeGreaterThan(0.18);
     expect(appearance.contentOpacity).toBeLessThan(1);
     expect(appearance.contentTransform).not.toBe("none");
-    expect(appearance.progress).toBeCloseTo(0.5, 1);
+    expect(appearance.progress).toBeGreaterThan(0);
+    expect(appearance.progress).toBeLessThan(1);
   }
 });

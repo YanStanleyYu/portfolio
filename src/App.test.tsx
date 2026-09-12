@@ -76,7 +76,7 @@ describe("responsive styling", () => {
     });
 
     expect(appStyleText).toContain(".impact-section { padding: 4rem 2rem; }");
-    expect(appStyleText).toContain(".experience-section { padding: 8rem 2rem; background: var(--paper); }");
+    expect(appStyleText).toContain(".experience-section { padding: 4rem 2rem; background: var(--paper); }");
     expect(appStyleText).not.toContain("background: #e8edef");
     expect(appStyleText).not.toContain("section:not(.hero):not(.contact-section)");
   });
