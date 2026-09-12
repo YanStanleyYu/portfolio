@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { AppStyles } from "./appStyles";
 import { useScrollReveal } from "./useScrollReveal";
 
@@ -163,6 +163,14 @@ function SectionHeading({
 function App() {
   useScrollReveal();
 
+  useEffect(() => {
+    const target = document.getElementById(window.location.hash.slice(1));
+
+    if (!target) return;
+
+    requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+  }, []);
+
   return (
     <>
       <AppStyles />
@@ -201,12 +209,11 @@ function App() {
             <h1>Certainty in every estimate. Confidence in every build.</h1>
             <p className="hero-copy">
               Yan Stanley Yu is a multilingual preconstruction and operations
-              leader who bridges complex engineering requirements with executive
-              project execution. Expert at transforming intricate drawings,
-              project scopes, supplier pricing, and field realities into
-              buildable commercial projects, he builds high-efficiency digital
-              workflows and robust vendor networks that systematically protect
-              profitability, eliminate risk, and accelerate delivery.
+              leader bridging complex engineering with executive execution.
+              Expert at turning drawings, scopes, and pricing into buildable
+              commercial projects—building the high-efficiency workflows and
+              vendor networks that protect margins, eliminate risk, and
+              accelerate delivery.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">

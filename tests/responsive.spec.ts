@@ -1,4 +1,59 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+const bookmarks = ["impact", "projects", "experience", "contact"] as const;
+
+async function expectBookmarkDestination(
+  page: Page,
+  bookmark: (typeof bookmarks)[number],
+) {
+  await expect(page).toHaveURL(new RegExp(`#${bookmark}$`));
+
+  await expect.poll(async () => page.evaluate((targetId) => {
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const target = document.querySelector<HTMLElement>(`#${targetId}`);
+
+    if (!header || !target) {
+      throw new Error("Sticky header or bookmark target was not found");
+    }
+
+    const headerBottom = header.getBoundingClientRect().bottom;
+    const targetRect = target.getBoundingClientRect();
+
+    return targetRect.bottom > headerBottom && targetRect.top < window.innerHeight;
+  }, bookmark)).toBe(true);
+}
+
+for (const bookmark of bookmarks) {
+  test(`opens the ${bookmark} bookmark from primary navigation`, async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== "desktop", "Primary navigation links are hidden below desktop width");
+
+    await page.goto("/portfolio/");
+    await page.evaluate(async () => document.fonts.ready);
+
+    await page.locator(`.site-header a[href="#${bookmark}"]`).click();
+    await expectBookmarkDestination(page, bookmark);
+
+    await expect(page).toHaveScreenshot(`bookmark-click-${bookmark}.png`, {
+      animations: "disabled",
+      fullPage: false,
+      maxDiffPixelRatio: 0.08,
+      threshold: 0.3,
+    });
+  });
+
+  test(`opens the ${bookmark} bookmark from its URL`, async ({ page }) => {
+    await page.goto(`/portfolio/#${bookmark}`);
+    await page.evaluate(async () => document.fonts.ready);
+    await expectBookmarkDestination(page, bookmark);
+
+    await expect(page).toHaveScreenshot(`bookmark-url-${bookmark}.png`, {
+      animations: "disabled",
+      fullPage: false,
+      maxDiffPixelRatio: 0.08,
+      threshold: 0.3,
+    });
+  });
+}
 
 test("matches the approved responsive portfolio", async ({ page }, testInfo) => {
   await page.goto("/portfolio/");
