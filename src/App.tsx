@@ -19,24 +19,43 @@ type Project = {
 };
 
 const metrics: Metric[] = [
-  { value: "360", suffix: "°", description: "Estimating-to-closeout visibility across awarded scopes" },
-  { value: "$4.3", suffix: "M", description: "Commercial glazing project estimated and coordinated" },
-  { value: "34", description: "Active projects coordinated across client relationships in 2025" },
-  { value: "15", suffix: "+", description: "Supplier relationships strengthening pricing and procurement" },
+  {
+    value: "360",
+    suffix: "°",
+    description: "Estimating-to-closeout visibility across awarded scopes",
+  },
+  {
+    value: "$4.3",
+    suffix: "M",
+    description: "Commercial glazing project estimated and coordinated",
+  },
+  {
+    value: "34",
+    description:
+      "Active projects coordinated across client relationships in 2025",
+  },
+  {
+    value: "15",
+    suffix: "+",
+    description: "Supplier relationships strengthening pricing and procurement",
+  },
 ];
 
 const capabilities = [
   {
     title: "Bid strategy & scope control",
-    description: "Review drawings and scope, develop detailed costs, align supplier quotations, and prepare clear, competitive proposals for commercial storefront, window, and glazing packages.",
+    description:
+      "Review drawings and scope, develop detailed costs, align supplier quotations, and prepare clear, competitive proposals for commercial storefront, window, and glazing packages.",
   },
   {
     title: "Glazing constructability",
-    description: "Connect field measurements, system requirements, submittals, and approvals to identify technical conflicts early and keep proposed work buildable.",
+    description:
+      "Connect field measurements, system requirements, submittals, and approvals to identify technical conflicts early and keep proposed work buildable.",
   },
   {
     title: "Award-to-operations handoff",
-    description: "Carry bid intent into purchasing, fabrication, material schedules, delivery, installation support, punch-list resolution, warranty, and cost control.",
+    description:
+      "Carry bid intent into purchasing, fabrication, material schedules, delivery, installation support, punch-list resolution, warranty, and cost control.",
   },
 ];
 
@@ -45,18 +64,30 @@ const projects: Project[] = [
     category: "Education · Commercial glazing",
     label: "Featured project",
     name: "Cherokee High School",
-    description: "Owned estimating and proposal development, then coordinated submittals, purchasing, supplier communication, and technical resolution alongside project management.",
+    description:
+      "Owned estimating and proposal development, then coordinated submittals, purchasing, supplier communication, and technical resolution alongside project management.",
     value: "$4.3M",
-    scope: ["Bid development", "Scope coordination", "Procurement", "Technical resolution"],
+    scope: [
+      "Bid development",
+      "Scope coordination",
+      "Procurement",
+      "Technical resolution",
+    ],
     featured: true,
   },
   {
     category: "Mixed-use · Atlanta",
     label: "Successful bid · full handoff",
     name: "Atlantic Station",
-    description: "Built the successful bid and proposal, then carried scope and pricing intent into purchasing, supplier coordination, delivery, installation, punch-list work, and warranty follow-up.",
+    description:
+      "Built the successful bid and proposal, then carried scope and pricing intent into purchasing, supplier coordination, delivery, installation, punch-list work, and warranty follow-up.",
     value: "$1M",
-    scope: ["Bid strategy", "Award handoff", "Installation support", "Closeout"],
+    scope: [
+      "Bid strategy",
+      "Award handoff",
+      "Installation support",
+      "Closeout",
+    ],
   },
 ];
 
@@ -65,7 +96,8 @@ const improvements = [
     marker: "A",
     kicker: "Digital workflow",
     title: "Made estimating and project data visible to the full team.",
-    description: "Proposed and helped implement a digital operations system that replaced scattered paper files with shared access to project information—reducing repeated calls and decision bottlenecks.",
+    description:
+      "Proposed and helped implement a digital operations system that replaced scattered paper files with shared access to project information—reducing repeated calls and decision bottlenecks.",
     result: "~75%",
     resultLabel: "reported efficiency gain",
   },
@@ -73,7 +105,8 @@ const improvements = [
     marker: "B",
     kicker: "In-house fabrication",
     title: "Brought storefront fabrication closer to cost control.",
-    description: "Recommended an internal storefront-frame fabrication capability and helped organize the workflow—reducing external lead time while improving control over cost, quality, and execution.",
+    description:
+      "Recommended an internal storefront-frame fabrication capability and helped organize the workflow—reducing external lead time while improving control over cost, quality, and execution.",
     result: "30–40%",
     resultLabel: "estimated project savings",
   },
@@ -81,7 +114,8 @@ const improvements = [
     marker: "C",
     kicker: "Supplier negotiation",
     title: "Defended the estimate when post-order pricing changed.",
-    description: "Negotiated through an unexpected supplier increase, preserved the quoted cost position, and avoided $35K in added expense.",
+    description:
+      "Negotiated through an unexpected supplier increase, preserved the quoted cost position, and avoided $35K in added expense.",
     result: "$35K",
     resultLabel: "cost avoided",
   },
@@ -92,17 +126,24 @@ const experience = [
     dates: "2022—Present",
     company: "Pro Surface · Atlanta, Georgia",
     title: "Director of Preconstruction & Operations",
-    description: "Leads commercial storefront, window, and glazing estimates from scope review and proposal development through supplier pricing and award handoff. Partners with project delivery on technical resolution, procurement, fabrication, installation, and warranty—supporting larger, more complex pursuits.",
+    description:
+      "Leads commercial storefront, window, and glazing estimates from scope review and proposal development through supplier pricing and award handoff. Partners with project delivery on technical resolution, procurement, fabrication, installation, and warranty—supporting larger, more complex pursuits.",
   },
   {
     dates: "2013—2022",
     company: "Glass Inc. · Atlanta, Georgia",
     title: "Senior Preconstruction Manager & Estimator",
-    description: "Developed budgets, quotations, and proposals for commercial glass projects, then coordinated vendors, purchasing, schedules, installation support, closeout, and contractor relationships to protect the awarded scope.",
+    description:
+      "Developed budgets, quotations, and proposals for commercial glass projects, then coordinated vendors, purchasing, schedules, installation support, closeout, and contractor relationships to protect the awarded scope.",
   },
 ];
 
-function SectionHeading({ number, title, description, light = false }: {
+function SectionHeading({
+  number,
+  title,
+  description,
+  light = false,
+}: {
   number: string;
   title: ReactNode;
   description?: string;
@@ -125,18 +166,24 @@ function App() {
   return (
     <>
       <AppStyles />
-      <a className="skip-link" href="#main">Skip to content</a>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
 
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Yan Yu home">
-          <span className="brand-mark" aria-hidden="true">YY</span>
+          <span className="brand-mark" aria-hidden="true">
+            YY
+          </span>
           <span>YAN YU</span>
         </a>
         <nav aria-label="Primary navigation">
           <a href="#impact">Impact</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
-          <a className="nav-contact" href="#contact">Contact</a>
+          <a className="nav-contact" href="#contact">
+            Contact
+          </a>
         </nav>
       </header>
 
@@ -148,12 +195,28 @@ function App() {
           </div>
 
           <div className="hero-content">
-            <p className="eyebrow"><span /> Chief Estimator · Commercial storefront · windows · glazing</p>
-            <h1>Certainty in every estimate. Confidence in every Build.</h1>
-            <p className="hero-copy">Multilingual preconstruction and operations leader bridging complex engineering requirements with executive project execution. Yan optimizes supply-chain workflows, strengthens vendor networks, and builds high-efficiency digital systems that protect budgets and accelerate delivery.</p>
+            <p className="eyebrow">
+              <span /> Chief Estimator · Commercial storefront · windows ·
+              glazing
+            </p>
+            <h1>Certainty in every estimate. Confidence in every build.</h1>
+            <p className="hero-copy">
+              Multilingual preconstruction and operations leader bridging
+              complex engineering requirements with executive project execution.
+              Yan optimizes supply-chain workflows, strengthens vendor networks,
+              and builds high-efficiency digital systems that protect budgets
+              and accelerate delivery.
+            </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">View selected work <span aria-hidden="true">↘</span></a>
-              <a className="button button-secondary" href="mailto:stanleyu9898@gmail.com">Discuss an opportunity</a>
+              <a className="button button-primary" href="#projects">
+                View selected work <span aria-hidden="true">↘</span>
+              </a>
+              <a
+                className="button button-secondary"
+                href="mailto:stanleyu9898@gmail.com"
+              >
+                Discuss an opportunity
+              </a>
             </div>
           </div>
 
@@ -166,7 +229,11 @@ function App() {
           </aside>
         </section>
 
-        <section className="impact-section" id="impact" data-scroll-reveal="rise">
+        <section
+          className="impact-section"
+          id="impact"
+          data-scroll-reveal="rise"
+        >
           <SectionHeading
             number="01 / IMPACT"
             title="A strong estimate protects the entire job."
@@ -176,7 +243,10 @@ function App() {
           <div className="metrics" aria-label="Career highlights">
             {metrics.map((metric) => (
               <article key={metric.description}>
-                <strong>{metric.value}{metric.suffix ? <span>{metric.suffix}</span> : null}</strong>
+                <strong>
+                  {metric.value}
+                  {metric.suffix ? <span>{metric.suffix}</span> : null}
+                </strong>
                 <p>{metric.description}</p>
               </article>
             ))}
@@ -184,8 +254,13 @@ function App() {
 
           <div className="capability-grid">
             {capabilities.map((capability, index) => (
-              <article className={`capability${index === 0 ? " capability-featured" : ""}`} key={capability.title}>
-                <span className="capability-index">{String(index + 1).padStart(2, "0")}</span>
+              <article
+                className={`capability${index === 0 ? " capability-featured" : ""}`}
+                key={capability.title}
+              >
+                <span className="capability-index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <h3>{capability.title}</h3>
                 <p>{capability.description}</p>
               </article>
@@ -193,11 +268,28 @@ function App() {
           </div>
         </section>
 
-        <section className="projects-section" id="projects" data-scroll-reveal="slide-left">
-          <SectionHeading number="02 / SELECTED WORK" title={<>Competitive bids.<br />Clear ownership.</>} light />
+        <section
+          className="projects-section"
+          id="projects"
+          data-scroll-reveal="slide-left"
+        >
+          <SectionHeading
+            number="02 / SELECTED WORK"
+            title={
+              <>
+                Competitive bids.
+                <br />
+                Clear ownership.
+              </>
+            }
+            light
+          />
           <div className="project-list">
             {projects.map((project) => (
-              <article className={`project${project.featured ? " project-primary" : ""}`} key={project.name}>
+              <article
+                className={`project${project.featured ? " project-primary" : ""}`}
+                key={project.name}
+              >
                 <div className="project-topline">
                   <span>{project.category}</span>
                   <span>{project.label}</span>
@@ -210,15 +302,30 @@ function App() {
                   <strong className="project-value">{project.value}</strong>
                 </div>
                 <div className="project-scope">
-                  {project.scope.map((item) => <span key={item}>{item}</span>)}
+                  {project.scope.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="systems-section" id="systems" data-scroll-reveal="slide-right">
-          <SectionHeading number="03 / SYSTEMS" title={<>Operational improvements<br />that compound.</>} />
+        <section
+          className="systems-section"
+          id="systems"
+          data-scroll-reveal="slide-right"
+        >
+          <SectionHeading
+            number="03 / SYSTEMS"
+            title={
+              <>
+                Operational improvements
+                <br />
+                that compound.
+              </>
+            }
+          />
           <div className="systems-layout">
             {improvements.map((improvement) => (
               <article className="system-story" key={improvement.marker}>
@@ -226,16 +333,28 @@ function App() {
                 <div>
                   <p className="story-kicker">{improvement.kicker}</p>
                   <h3>{improvement.title}</h3>
-                  {improvement.description ? <p>{improvement.description}</p> : null}
+                  {improvement.description ? (
+                    <p>{improvement.description}</p>
+                  ) : null}
                 </div>
-                <strong>{improvement.result}<small>{improvement.resultLabel}</small></strong>
+                <strong>
+                  {improvement.result}
+                  <small>{improvement.resultLabel}</small>
+                </strong>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="experience-section" id="experience" data-scroll-reveal="scale">
-          <SectionHeading number="04 / EXPERIENCE" title="Field-informed leadership." />
+        <section
+          className="experience-section"
+          id="experience"
+          data-scroll-reveal="scale"
+        >
+          <SectionHeading
+            number="04 / EXPERIENCE"
+            title="Field-informed leadership."
+          />
           <div className="timeline">
             {experience.map((role) => (
               <article key={role.dates}>
@@ -254,19 +373,31 @@ function App() {
               <ul className="tool-list">
                 <li>
                   <strong>Industry-specific software</strong>
-                  <span>WinBid Pro — storefront and curtain wall estimating, material optimization, and CAD shop drawing generation</span>
+                  <span>
+                    WinBid Pro — storefront and curtain wall estimating,
+                    material optimization, and CAD shop drawing generation
+                  </span>
                 </li>
                 <li>
                   <strong>Data analysis &amp; modeling</strong>
-                  <span>Advanced Microsoft Excel — dynamic estimating templates, complex formula architecture, and material breakdowns</span>
+                  <span>
+                    Advanced Microsoft Excel — dynamic estimating templates,
+                    complex formula architecture, and material breakdowns
+                  </span>
                 </li>
                 <li>
                   <strong>Enterprise collaboration</strong>
-                  <span>Microsoft 365 ecosystem — Word, PowerPoint, and cloud-based document management</span>
+                  <span>
+                    Microsoft 365 ecosystem — Word, PowerPoint, and cloud-based
+                    document management
+                  </span>
                 </li>
                 <li>
                   <strong>Operating environments</strong>
-                  <span>Multi-platform proficiency across Windows and Apple macOS/iOS ecosystems</span>
+                  <span>
+                    Multi-platform proficiency across Windows and Apple
+                    macOS/iOS ecosystems
+                  </span>
                 </li>
               </ul>
             </div>
@@ -277,11 +408,20 @@ function App() {
           </div>
         </section>
 
-        <section className="contact-section" id="contact" data-scroll-reveal="rise">
+        <section
+          className="contact-section"
+          id="contact"
+          data-scroll-reveal="rise"
+        >
           <p className="section-number">05 / CONTACT</p>
           <div className="contact-main">
-            <p>For leadership opportunities spanning preconstruction strategy, estimating, and construction operations:</p>
-            <a href="mailto:stanleyu9898@gmail.com">stanleyu9898@gmail.com <span aria-hidden="true">↗</span></a>
+            <p>
+              For leadership opportunities spanning preconstruction strategy,
+              estimating, and construction operations:
+            </p>
+            <a href="mailto:stanleyu9898@gmail.com">
+              stanleyu9898@gmail.com <span aria-hidden="true">↗</span>
+            </a>
           </div>
           <div className="target-roles" aria-label="Target leadership roles">
             <span>Preconstruction Director</span>
