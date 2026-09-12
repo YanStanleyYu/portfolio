@@ -16,11 +16,15 @@ export const appStyleText = String.raw`
   --muted: #667480;
   --line: #ccd6db;
   --max: 77.5rem;
+  --header-height: 5.375rem;
   --hero-edge-gap: 3.375rem;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
 body {
   margin: 0;
   color: var(--ink);
@@ -49,8 +53,8 @@ h1, h2, h3, p, a, span { overflow-wrap: anywhere; }
   z-index: 20;
   top: 0;
   width: 100%;
-  min-height: 5.375rem;
-  margin-bottom: -5.375rem;
+  min-height: var(--header-height);
+  margin-bottom: calc(-1 * var(--header-height));
   padding: 0 max(1.5rem, calc((100vw - var(--max)) / 2));
   display: flex;
   align-items: center;

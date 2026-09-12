@@ -100,6 +100,25 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
   expect(testInfo.errors).toHaveLength(0);
 });
 
+test("aligns bookmark targets beneath the sticky header", async ({ page }) => {
+  await page.goto("/");
+
+  await page.locator('.site-header a[href="#projects"]').evaluate((link) =>
+    (link as HTMLAnchorElement).click(),
+  );
+
+  await expect.poll(async () => page.evaluate(() => {
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const target = document.querySelector<HTMLElement>("#projects");
+
+    if (!header || !target) {
+      throw new Error("Sticky header or bookmark target was not found");
+    }
+
+    return Math.abs(target.getBoundingClientRect().top - header.getBoundingClientRect().bottom);
+  })).toBeLessThan(2);
+});
+
 test("links section reveal progress to its viewport position", async ({ page }) => {
   await page.goto("/");
 
