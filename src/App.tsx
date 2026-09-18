@@ -125,7 +125,7 @@ const experience = [
   {
     dates: "2022—Present",
     company: "Pro Surface · Atlanta, Georgia",
-    title: "Director of Preconstruction & Operations",
+    title: "Chief Estimator",
     description:
       "Leads commercial storefront, window, and glazing estimates from scope review and proposal development through supplier pricing and award handoff. Partners with project delivery on technical resolution, procurement, fabrication, installation, and warranty—supporting larger, more complex pursuits.",
   },
@@ -437,18 +437,15 @@ function App() {
           <div className="contact-content" data-scroll-reveal="rise">
             <p className="section-number">05 / CONTACT</p>
             <div className="contact-main">
-              <p>
-                For leadership opportunities spanning preconstruction strategy,
-                estimating, and construction operations:
-              </p>
+              <p>For opportunities around estimating:</p>
               <a href="mailto:stanleyu9898@gmail.com">
                 stanleyu9898@gmail.com <span aria-hidden="true">↗</span>
               </a>
             </div>
             <div className="target-roles" aria-label="Target leadership roles">
-              <span>Preconstruction Manager</span>
-              <span>Director of Preconstruction &amp; Estimating</span>
               <span>Chief Estimator</span>
+              <span>Senior Estimator</span>
+              <span>Principal Estimator</span>
             </div>
             <div className="contact-meta">
               <span>Based in Georgia</span>
@@ -460,7 +457,7 @@ function App() {
       </main>
 
       <footer>
-        <span>YAN STANLEY YU · CHIEF ESTIMATOR & PRECONSTRUCTION LEADER</span>
+        <span>YAN STANLEY YU · CHIEF ESTIMATOR</span>
         <span>Commercial storefront · windows · glazing</span>
       </footer>
     </>
