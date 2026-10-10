@@ -292,6 +292,12 @@ h1 {
 .timeline-date { font-size: .72rem; letter-spacing: .06em; font-weight: 400; color: var(--muted); }
 .timeline-role p { margin: 0 0 .45rem; color: var(--muted); font-size: .85rem; }
 .timeline-role h3 { margin: 0; font-size: 1.28rem; }
+.promotions { margin: 0; padding: 0; list-style: none; }
+.promotions li { position: relative; padding: 0 0 1.4rem 1.5rem; }
+.promotions li:last-child { padding-bottom: 0; }
+.promotions li::before { content: ""; position: absolute; left: 0; top: .44rem; width: .5rem; height: .5rem; border-radius: 50%; background: var(--blue-deep); }
+.promotions li:not(:last-child)::after { content: ""; position: absolute; left: .21875rem; top: 1.19rem; bottom: .25rem; width: .0625rem; background: #bac6cb; }
+.promotions span { display: block; margin-top: .3rem; color: var(--muted); font-size: .72rem; letter-spacing: .06em; }
 .timeline-copy { margin: 0; color: var(--muted); }
 .tools-languages { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; }
 .tools-languages > div { padding-top: 1.3rem; border-top: 0.1875rem solid var(--ink); }

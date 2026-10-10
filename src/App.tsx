@@ -63,7 +63,7 @@ const capabilities = [
 const projects: Project[] = [
   {
     category: "Education",
-    label: "Pro Surface",
+    label: "ProService Inc.",
     name: "Cherokee High School",
     description:
       "A public high school in Canton, Georgia. Saved $1.6M, including $100K on aluminum and 5–10% on other materials. When a third party's final measurements came in wrong, coordinated the frame rebuild and reorder.",
@@ -80,7 +80,7 @@ const projects: Project[] = [
   },
   {
     category: "Education",
-    label: "Pro Surface",
+    label: "ProService Inc.",
     name: "Jackson Campus",
     description:
       "A multi-million-dollar school campus project. Priced the full glazing package with value-engineering options to help the general contractor control cost.",
@@ -88,7 +88,7 @@ const projects: Project[] = [
   },
   {
     category: "Education",
-    label: "Pro Surface",
+    label: "ProService Inc.",
     name: "Harlem School",
     description:
       "Glazing for a school building, estimated to meet the durability and safety needs of an education project, with 5–10% negotiated savings on materials.",
@@ -96,7 +96,7 @@ const projects: Project[] = [
   },
   {
     category: "Industrial",
-    label: "Pro Surface",
+    label: "ProService Inc.",
     name: "Kubota Loader Facility",
     description:
       "An industrial facility for Kubota's operations. Quantified the glazing around the plant's industrial requirements and proposed cost-saving options early, holding the budget without sacrificing performance.",
@@ -104,7 +104,7 @@ const projects: Project[] = [
   },
   {
     category: "Education",
-    label: "Pro Surface",
+    label: "ProService Inc.",
     name: "Jefferson High School",
     description:
       "A fast, disciplined takeoff from drawings, elevations, and specs. Scope gaps on alternates and addenda were closed before bid day, and a complete pricing package let the project team release materials without rework.",
@@ -112,7 +112,7 @@ const projects: Project[] = [
   },
   {
     category: "Education",
-    label: "Pro Surface",
+    label: "ProService Inc.",
     name: "East Hall High School",
     description:
       "Led the value-engineering review on the high school's glazing, identifying $50K in savings while maintaining the architect's design intent.",
@@ -133,7 +133,7 @@ const improvements = [
     marker: "A",
     kicker: "Company growth",
     title:
-      "Stanley helped grow Pro Surface from subcontractor to general contractor.",
+      "Stanley helped grow ProService Inc. from subcontractor to general contractor.",
     description:
       "By estimating, winning, and coordinating more and larger projects, Stanley helped the office grow from 2 to 7 people with a 5-person warehouse team, and annual revenue rise from $1M to $5M.",
     result: "5×",
@@ -174,7 +174,7 @@ const improvements = [
 const experience = [
   {
     dates: "2022 — PRESENT",
-    company: "Pro Surface · Atlanta, Georgia",
+    company: "ProService Inc. · Atlanta, Georgia",
     title: "Chief Estimator",
     description: (
       <>
@@ -199,9 +199,13 @@ const experience = [
     ),
   },
   {
-    dates: "2013 — 2022",
+    dates: "2014 — 2022",
     company: "Glass Inc. · Atlanta, Georgia",
-    title: "Senior Preconstruction Manager & Estimator",
+    promotions: [
+      { title: "Senior Estimator", dates: "2017 — 2022" },
+      { title: "Estimator", dates: "2015 — 2017" },
+      { title: "Assistant Estimator", dates: "2014 — 2015" },
+    ],
     description: (
       <>
         Owned commercial glass projects from $10K to $1M end to end as estimator
@@ -325,7 +329,7 @@ function App() {
           <SectionHeading
             number="01 / IMPACT"
             title="A strong estimate protects the entire job."
-            description="From the $4.3M Cherokee High School glazing project to growing Pro Surface from $1M to $5M in annual revenue, Stanley pairs field-informed technical problem-solving with disciplined estimating, procurement, and execution, supporting an efficiency gain of about 75% and estimated project savings of 30–40%."
+            description="From the $4.3M Cherokee High School glazing project to growing ProService Inc. from $1M to $5M in annual revenue, Stanley pairs field-informed technical problem-solving with disciplined estimating, procurement, and execution, supporting an efficiency gain of about 75% and estimated project savings of 30–40%."
           />
 
           <div className="metrics" aria-label="Career highlights">
@@ -445,7 +449,18 @@ function App() {
                 <div className="timeline-date">{role.dates}</div>
                 <div className="timeline-role">
                   <p>{role.company}</p>
-                  <h3>{role.title}</h3>
+                  {role.promotions ? (
+                    <ol className="promotions">
+                      {role.promotions.map((promotion) => (
+                        <li key={promotion.title}>
+                          <h3>{promotion.title}</h3>
+                          <span>{promotion.dates}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <h3>{role.title}</h3>
+                  )}
                 </div>
                 <div className="timeline-copy">{role.description}</div>
               </article>
@@ -458,8 +473,16 @@ function App() {
                 <li>
                   <strong>Industry-specific software</strong>
                   <span>
-                    WinBid Pro — storefront and curtain wall estimating,
-                    material optimization, and CAD shop drawing generation
+                    WinBid Pro and Orgadata LogiKal — storefront and curtain
+                    wall estimating, material optimization, and CAD shop drawing
+                    generation
+                  </span>
+                </li>
+                <li>
+                  <strong>Construction project management</strong>
+                  <span>
+                    Procore — project coordination and document sharing with
+                    general contractors
                   </span>
                 </li>
                 <li>
@@ -472,8 +495,8 @@ function App() {
                 <li>
                   <strong>Enterprise collaboration</strong>
                   <span>
-                    Microsoft 365 ecosystem — Word, PowerPoint, and cloud-based
-                    document management
+                    Microsoft 365 and Apple iWork — Word, PowerPoint, Pages,
+                    Numbers, and cloud-based document management
                   </span>
                 </li>
                 <li>

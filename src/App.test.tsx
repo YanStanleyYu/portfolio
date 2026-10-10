@@ -19,7 +19,14 @@ describe("portfolio copy", () => {
     expect(screen.getByRole("heading", { name: /Operational improvements\s*that compound\./ })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Field-informed leadership." })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Chief Estimator" })).toBeTruthy();
-    expect(screen.getByRole("heading", { name: "Senior Preconstruction Manager & Estimator" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Senior Estimator" })).toBeTruthy();
+    expect(screen.getByText("ProService Inc. · Atlanta, Georgia")).toBeTruthy();
+    expect(screen.getByText("2014 — 2022")).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Estimator" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Assistant Estimator" })).toBeTruthy();
+    expect(screen.getByText("2014 — 2015")).toBeTruthy();
+    expect(screen.queryByText(/Promoted from/)).toBeNull();
+    expect(screen.queryByText(/Pro Surface/)).toBeNull();
     expect(screen.getByText("Yan Stanley Yu", { selector: ".hero-copy strong" })).toBeTruthy();
     expect(screen.getByText(/multilingual estimator and preconstruction leader bridging complex engineering/)).toBeTruthy();
     expect(screen.getByText(/vendor networks that protect margins, eliminate risk, and accelerate delivery/)).toBeTruthy();
