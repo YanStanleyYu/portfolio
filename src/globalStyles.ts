@@ -28,7 +28,7 @@ body {
   overflow-x: clip;
 }
 #root { width: 100%; max-width: 100%; overflow-x: hidden; overflow-x: clip; }
-button, a { font: inherit; }
+button, a { font: inherit; cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

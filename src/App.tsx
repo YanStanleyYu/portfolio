@@ -272,7 +272,7 @@ function App() {
           <a href="#impact">Impact</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
-          <a className="nav-contact" href="#contact">
+          <a className="nav-contact button-secondary" href="#contact">
             Contact
           </a>
         </nav>

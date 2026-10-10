@@ -41,6 +41,17 @@ describe("portfolio navigation", () => {
     expect(screen.getByRole("link", { name: /View selected work/ }).getAttribute("href")).toBe("#projects");
     expect(screen.getByRole("link", { name: "Discuss an opportunity" }).getAttribute("href")).toBe("#contact");
   });
+
+  it("shares the secondary button hover between both contact actions", () => {
+    render(<App />);
+
+    expect(screen.getByRole("link", { name: "Contact" }).classList).toContain("button-secondary");
+    expect(screen.getByRole("link", { name: "Discuss an opportunity" }).classList).toContain("button-secondary");
+  });
+
+  it("shows a pointer cursor on every button and link", () => {
+    expect(globalStyleText).toMatch(/button, a\s*\{[^}]*cursor:\s*pointer;/);
+  });
 });
 
 describe("responsive styling", () => {
