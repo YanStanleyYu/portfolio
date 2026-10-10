@@ -19,9 +19,11 @@ export default defineConfig({
     url: "http://127.0.0.1:4173/portfolio/",
     reuseExistingServer: !process.env.CI,
   },
+  // @desktop-only tests use primary navigation links hidden below desktop width,
+  // or set their own desktop viewport, so they are not scheduled for smaller projects.
   projects: [
-    { name: "mobile", use: { viewport: { width: 375, height: 812 } } },
-    { name: "tablet", use: { viewport: { width: 768, height: 1024 } } },
+    { name: "mobile", grepInvert: /@desktop-only/, use: { viewport: { width: 375, height: 812 } } },
+    { name: "tablet", grepInvert: /@desktop-only/, use: { viewport: { width: 768, height: 1024 } } },
     { name: "desktop", use: { viewport: { width: 1440, height: 1000 } } },
   ],
 });

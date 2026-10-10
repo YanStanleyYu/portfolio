@@ -24,9 +24,7 @@ async function expectBookmarkDestination(
 }
 
 for (const bookmark of bookmarks) {
-  test(`opens the ${bookmark} bookmark from primary navigation`, async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "desktop", "Primary navigation links are hidden below desktop width");
-
+  test(`opens the ${bookmark} bookmark from primary navigation`, { tag: "@desktop-only" }, async ({ page }) => {
     await page.goto("/portfolio/");
     await page.evaluate(async () => document.fonts.ready);
 
@@ -230,9 +228,7 @@ test("does not update reveal state without a real scroll change", async ({ page 
   await expect(impact).not.toHaveAttribute("data-scroll-state", "stationary");
 });
 
-test("keeps the Impact heading visible at the bottom of a tall viewport", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "desktop");
-
+test("keeps the Impact heading visible at the bottom of a tall viewport", { tag: "@desktop-only" }, async ({ page }) => {
   await page.setViewportSize({ width: 1173, height: 979 });
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
