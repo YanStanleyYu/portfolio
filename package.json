@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "test": "vitest run src",
+    "test": "vitest run --dir src",
     "test:visual": "playwright test",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
