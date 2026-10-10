@@ -18,16 +18,15 @@ describe("portfolio copy", () => {
     expect(screen.getByRole("heading", { name: /Competitive bids\.\s*Clear ownership\./ })).toBeTruthy();
     expect(screen.getByRole("heading", { name: /Operational improvements\s*that compound\./ })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Field-informed leadership." })).toBeTruthy();
-    expect(screen.getByRole("heading", { name: "Director of Preconstruction & Operations" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Chief Estimator" })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Senior Preconstruction Manager & Estimator" })).toBeTruthy();
     expect(screen.getByText("Yan Stanley Yu", { selector: ".hero-copy strong" })).toBeTruthy();
     expect(screen.getByText(/multilingual estimator and preconstruction leader bridging complex engineering/)).toBeTruthy();
     expect(screen.getByText(/vendor networks that protect margins, eliminate risk, and accelerate delivery/)).toBeTruthy();
-    expect(screen.getByText(/reported efficiency gain of about 75%/)).toBeTruthy();
-    expect(screen.getByText("Preconstruction Manager")).toBeTruthy();
-    expect(screen.getByText("Director of Preconstruction & Estimating")).toBeTruthy();
+    expect(screen.getByText(/efficiency gain of about 75%/)).toBeTruthy();
     expect(screen.getByText("Chief Estimator", { selector: ".target-roles span" })).toBeTruthy();
-    expect(screen.getByText("Director of Operations / General Manager")).toBeTruthy();
+    expect(screen.getByText("Senior Estimator", { selector: ".target-roles span" })).toBeTruthy();
+    expect(screen.getByText("Principal Estimator", { selector: ".target-roles span" })).toBeTruthy();
     expect(screen.queryByText("Accountable handoffs.")).toBeNull();
   });
 });
@@ -41,7 +40,6 @@ describe("portfolio navigation", () => {
     expect(screen.getByRole("link", { name: "Experience" }).getAttribute("href")).toBe("#experience");
     expect(screen.getByRole("link", { name: /View selected work/ }).getAttribute("href")).toBe("#projects");
     expect(screen.getByRole("link", { name: "Discuss an opportunity" }).getAttribute("href")).toBe("mailto:stanleyu9898@gmail.com");
-    expect(screen.getByRole("link", { name: "770-886-9898" }).getAttribute("href")).toBe("tel:+17708869898");
   });
 });
 
