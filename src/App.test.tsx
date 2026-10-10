@@ -47,9 +47,9 @@ describe("portfolio navigation", () => {
 
 describe("responsive styling", () => {
   it("keeps styles in TypeScript with rem-based tablet and contact values", () => {
-    expect(viewport.tablet).toBe("47.5rem");
+    expect(viewport.tablet).toBe("48rem");
     expect(appStyleText).toMatch(/\.contact-section\s*\{\s*padding:\s*3rem 2rem;/);
-    expect(appStyleText).toMatch(/@media\s*\(max-width:\s*47\.5rem\)/);
+    expect(appStyleText).toMatch(/@media\s*\(max-width:\s*48rem\)/);
     expect(appStyleText).toMatch(/\.contact-section\s*\{\s*padding:\s*3rem 1\.5rem;/);
     expect(appStyleText).not.toMatch(/\dpx\b/);
   });
@@ -95,8 +95,17 @@ describe("responsive styling", () => {
     expect(appStyleText).toContain("--hero-edge-gap: 3.375rem");
     expect(appStyleText).toContain("padding-bottom: var(--hero-edge-gap)");
     expect(appStyleText).toMatch(/\.eyebrow \{[\s\S]*?margin: 0;/);
-    expect(appStyleText).toMatch(/@media \(max-width: 47\.5rem\)[\s\S]*\.hero \{ min-height: auto; padding-bottom: 3rem; \}/);
-    expect(appStyleText).toMatch(/@media \(max-width: 47\.5rem\)[\s\S]*\.availability \{[\s\S]*position: static;[\s\S]*margin: 2rem auto 0;/);
+    expect(appStyleText).toMatch(/@media \(max-width: 48rem\)[\s\S]*\.hero \{ min-height: auto; padding-bottom: 3rem; \}/);
+    expect(appStyleText).toMatch(/@media \(max-width: 48rem\)[\s\S]*\.availability \{[\s\S]*position: static;[\s\S]*margin: 2rem auto 0;/);
+  });
+
+  it("keeps impact metrics in a 2 by 2 grid at tablet and smaller", () => {
+    expect(appStyleText).toContain(".metrics { grid-template-columns: 1fr 1fr; }");
+    expect(appStyleText).not.toContain(".metrics { grid-template-columns: 1fr; }");
+  });
+
+  it("stacks tools and languages at the tablet viewport", () => {
+    expect(appStyleText).toMatch(/@media \(max-width: 48rem\) \{[^}]*\}[^@]*\.tools-languages \{ grid-template-columns: 1fr; \}[^@]*\}\s*@media \(prefers-reduced-motion/);
   });
 });
 

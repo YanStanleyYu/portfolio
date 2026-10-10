@@ -106,17 +106,9 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
   expect(layout.horizontalOverflow).toBe(false);
   expect(layout.headerPosition).toBe("sticky");
 
-  if (layout.viewportWidth <= 620) {
+  if (layout.viewportWidth <= 768) {
     expect(layout.sectionPadding).toEqual({
       impact: "56px 24px",
-      projects: "64px 24px",
-      systems: "64px 24px",
-      experience: "64px 24px",
-      contact: "48px 24px",
-    });
-  } else if (layout.viewportWidth <= 760) {
-    expect(layout.sectionPadding).toEqual({
-      impact: "64px 24px",
       projects: "64px 24px",
       systems: "64px 24px",
       experience: "64px 24px",
@@ -132,7 +124,7 @@ test("matches the approved responsive portfolio", async ({ page }, testInfo) => 
     });
   }
 
-  if (layout.viewportWidth <= 760) {
+  if (layout.viewportWidth <= 768) {
     expect(layout.availabilityPosition).toBe("static");
     expect(Math.abs(layout.actionAvailabilityGap - 32)).toBeLessThan(2);
     expect(layout.availabilityContained).toBe(true);
