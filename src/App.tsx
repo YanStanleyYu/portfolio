@@ -302,10 +302,7 @@ function App() {
               <a className="button button-primary" href="#projects">
                 View selected work <span aria-hidden="true">↘</span>
               </a>
-              <a
-                className="button button-secondary"
-                href="mailto:stanleyu9898@gmail.com"
-              >
+              <a className="button button-secondary" href="#contact">
                 Discuss an opportunity
               </a>
             </div>
