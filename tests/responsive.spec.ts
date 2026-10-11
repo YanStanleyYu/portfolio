@@ -18,9 +18,11 @@ async function expectBookmarkDestination(
     }
 
     const headerBottom = header.getBoundingClientRect().bottom;
-    const targetRect = target.getBoundingClientRect();
+    const targetTop = target.getBoundingClientRect().top;
+    const scrolledToEnd =
+      window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1;
 
-    return targetRect.bottom > headerBottom && targetRect.top < window.innerHeight;
+    return Math.abs(targetTop - headerBottom) < 2 || (scrolledToEnd && targetTop > headerBottom);
   }, bookmark)).toBe(true);
 }
 

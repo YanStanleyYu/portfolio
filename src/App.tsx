@@ -255,7 +255,12 @@ function App() {
 
     if (!target) return;
 
-    requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ block: "start" });
+      // Web fonts begin loading during that layout and reflow the sections above
+      // the target when they swap in, so align again once they are ready.
+      void document.fonts.ready.then(() => target.scrollIntoView({ block: "start" }));
+    });
   }, []);
 
   return (
@@ -543,7 +548,7 @@ function App() {
             <div className="contact-main">
               <p>For remote opportunities around estimating:</p>
               <a href="mailto:stanleyu9898@gmail.com">
-                stanleyu9898@gmail.com <span aria-hidden="true">↗</span>
+                stanleyu9898@gmail.com <span aria-hidden="true">{"\u2197\uFE0E"}</span>
               </a>
             </div>
             <div className="target-roles" aria-label="Target leadership roles">
@@ -559,7 +564,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn <span aria-hidden="true">↗</span>
+                LinkedIn <span aria-hidden="true">{"\u2197\uFE0E"}</span>
               </a>
             </div>
           </div>
