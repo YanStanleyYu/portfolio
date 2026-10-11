@@ -276,8 +276,13 @@ function App() {
           <a href="#impact">Impact</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
-          <a className="nav-contact button-secondary" href="#contact">
-            Contact
+          <a
+            className="nav-contact button-secondary"
+            href="/portfolio/assets/YanStanleyYu2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
           </a>
         </nav>
       </header>
@@ -303,7 +308,7 @@ function App() {
               risk, and accelerate delivery.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">
+              <a className="button button-primary" href="#impact">
                 View selected work <span aria-hidden="true">↘</span>
               </a>
               <a className="button button-secondary" href="#contact">

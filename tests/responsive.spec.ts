@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
 const bookmarks = ["impact", "projects", "experience", "contact"] as const;
+const navBookmarks = ["impact", "projects", "experience"] as const;
 
 async function expectBookmarkDestination(
   page: Page,
@@ -23,7 +24,7 @@ async function expectBookmarkDestination(
   }, bookmark)).toBe(true);
 }
 
-for (const bookmark of bookmarks) {
+for (const bookmark of navBookmarks) {
   test(`opens the ${bookmark} bookmark from primary navigation`, { tag: "@desktop-only" }, async ({ page }) => {
     await page.goto("/portfolio/");
     await page.evaluate(async () => document.fonts.ready);
@@ -38,7 +39,9 @@ for (const bookmark of bookmarks) {
       threshold: 0.3,
     });
   });
+}
 
+for (const bookmark of bookmarks) {
   test(`opens the ${bookmark} bookmark from its URL`, async ({ page }) => {
     await page.goto(`/portfolio/#${bookmark}`);
     await page.evaluate(async () => document.fonts.ready);
@@ -52,6 +55,22 @@ for (const bookmark of bookmarks) {
     });
   });
 }
+
+test("opens the resume PDF in a new tab from primary navigation", async ({ page }) => {
+  await page.goto("/portfolio/");
+
+  const resume = page.locator(".site-header").getByRole("link", { name: "Resume" });
+  const popupPromise = page.waitForEvent("popup");
+  await resume.click();
+  await popupPromise;
+
+  const href = await resume.getAttribute("href");
+  expect(href).toBe("/portfolio/assets/YanStanleyYu2026.pdf");
+
+  const response = await page.request.get(href!);
+  expect(response.ok()).toBe(true);
+  expect(response.headers()["content-type"]).toContain("application/pdf");
+});
 
 test("matches the approved responsive portfolio", async ({ page }, testInfo) => {
   await page.goto("/portfolio/");

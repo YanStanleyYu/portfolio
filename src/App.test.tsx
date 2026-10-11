@@ -45,14 +45,24 @@ describe("portfolio navigation", () => {
     expect(screen.getByRole("link", { name: "Impact" }).getAttribute("href")).toBe("#impact");
     expect(screen.getByRole("link", { name: "Projects" }).getAttribute("href")).toBe("#projects");
     expect(screen.getByRole("link", { name: "Experience" }).getAttribute("href")).toBe("#experience");
-    expect(screen.getByRole("link", { name: /View selected work/ }).getAttribute("href")).toBe("#projects");
+    expect(screen.getByRole("link", { name: /View selected work/ }).getAttribute("href")).toBe("#impact");
     expect(screen.getByRole("link", { name: "Discuss an opportunity" }).getAttribute("href")).toBe("#contact");
   });
 
-  it("shares the secondary button hover between both contact actions", () => {
+  it("opens the resume PDF in a new tab from primary navigation", () => {
     render(<App />);
 
-    expect(screen.getByRole("link", { name: "Contact" }).classList).toContain("button-secondary");
+    const resume = screen.getByRole("link", { name: "Resume" });
+
+    expect(resume.getAttribute("href")).toBe("/portfolio/assets/YanStanleyYu2026.pdf");
+    expect(resume.getAttribute("target")).toBe("_blank");
+    expect(resume.getAttribute("rel")).toBe("noopener noreferrer");
+  });
+
+  it("shares the secondary button hover between both header and hero actions", () => {
+    render(<App />);
+
+    expect(screen.getByRole("link", { name: "Resume" }).classList).toContain("button-secondary");
     expect(screen.getByRole("link", { name: "Discuss an opportunity" }).classList).toContain("button-secondary");
   });
 
