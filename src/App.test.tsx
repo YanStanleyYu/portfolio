@@ -45,7 +45,7 @@ describe("portfolio navigation", () => {
     expect(screen.getByRole("link", { name: "Impact" }).getAttribute("href")).toBe("#impact");
     expect(screen.getByRole("link", { name: "Projects" }).getAttribute("href")).toBe("#projects");
     expect(screen.getByRole("link", { name: "Experience" }).getAttribute("href")).toBe("#experience");
-    expect(screen.getByRole("link", { name: /View selected work/ }).getAttribute("href")).toBe("#impact");
+    expect(screen.getByRole("link", { name: /View career impact/ }).getAttribute("href")).toBe("#impact");
     expect(screen.getByRole("link", { name: "Discuss an opportunity" }).getAttribute("href")).toBe("#contact");
   });
 

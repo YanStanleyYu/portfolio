@@ -309,7 +309,7 @@ function App() {
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#impact">
-                View selected work <span aria-hidden="true">↘</span>
+                View career impact <span aria-hidden="true">↘</span>
               </a>
               <a className="button button-secondary" href="#contact">
                 Discuss an opportunity
