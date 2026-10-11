@@ -32,8 +32,8 @@ jobs:
         run: npm ci
       - name: Test
         run: npm test
-      - name: Install visual test browser
-        run: npx playwright install --with-deps chromium
+      - name: Install visual test browsers
+        run: npx playwright install --with-deps chromium webkit
       - name: Test responsive layout
         run: npm run test:visual -- --ignore-snapshots
       - name: Test responsive snapshots

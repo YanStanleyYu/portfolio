@@ -25,5 +25,16 @@ export default defineConfig({
     { name: "mobile", grepInvert: /@desktop-only/, use: { viewport: { width: 375, height: 812 } } },
     { name: "tablet", grepInvert: /@desktop-only/, use: { viewport: { width: 768, height: 1024 } } },
     { name: "desktop", use: { viewport: { width: 1440, height: 1000 } } },
+    {
+      name: "mobile-safari",
+      grepInvert: /@desktop-only/,
+      use: { browserName: "webkit", viewport: { width: 375, height: 812 } },
+    },
+    {
+      name: "tablet-safari",
+      grepInvert: /@desktop-only/,
+      use: { browserName: "webkit", viewport: { width: 768, height: 1024 } },
+    },
+    { name: "desktop-safari", use: { browserName: "webkit", viewport: { width: 1440, height: 1000 } } },
   ],
 });
