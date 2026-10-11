@@ -130,6 +130,18 @@ describe("responsive styling", () => {
     expect(appStyleText).not.toContain(".metrics { grid-template-columns: 1fr; }");
   });
 
+  it("groups skills above languages in the same column", () => {
+    render(<App />);
+
+    const skills = screen.getByText("SKILLS", { selector: ".mini-label" });
+    const languages = screen.getByText("LANGUAGES", { selector: ".mini-label" });
+    const column = skills.closest(".tools-languages > div");
+
+    expect(column).toBe(languages.closest(".tools-languages > div"));
+    expect(skills.compareDocumentPosition(languages) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getByText("Estimate-to-operations handoff")).toBeTruthy();
+  });
+
   it("stacks tools and languages at the tablet viewport", () => {
     expect(appStyleText).toMatch(/@media \(max-width: 48rem\) \{[^}]*\}[^@]*\.tools-languages \{ grid-template-columns: 1fr; \}[^@]*\}\s*@media \(prefers-reduced-motion/);
   });

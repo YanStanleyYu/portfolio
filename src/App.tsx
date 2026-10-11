@@ -225,6 +225,21 @@ const experience = [
   },
 ];
 
+const skills = [
+  "Storefront, window, entrance, and glazing systems",
+  "Architectural drawing and specification review",
+  "Quantity takeoffs and material and labor pricing",
+  "Scope analysis, addenda, exclusions, and alternates",
+  "Bid strategy and proposal development",
+  "Value engineering and constructability review",
+  "Cost analysis, risk identification, and margin protection",
+  "Supplier pricing, procurement, and negotiation",
+  "Estimate-to-operations handoff",
+  "Fabrication, installation, and project coordination",
+  "Estimating workflow and process improvement",
+  "Client, contractor, and vendor relationship management",
+];
+
 function SectionHeading({
   number,
   title,
@@ -259,7 +274,9 @@ function App() {
       target.scrollIntoView({ block: "start" });
       // Web fonts begin loading during that layout and reflow the sections above
       // the target when they swap in, so align again once they are ready.
-      void document.fonts.ready.then(() => target.scrollIntoView({ block: "start" }));
+      void document.fonts.ready.then(() =>
+        target.scrollIntoView({ block: "start" }),
+      );
     });
   }, []);
 
@@ -518,26 +535,36 @@ function App() {
                 </li>
               </ul>
             </div>
-            <div>
-              <span className="mini-label">LANGUAGES</span>
-              <dl className="language-proficiency">
-                <div>
-                  <dt>English</dt>
-                  <dd>Proficient</dd>
-                </div>
-                <div>
-                  <dt>Mandarin</dt>
-                  <dd>Native</dd>
-                </div>
-                <div>
-                  <dt>Cantonese</dt>
-                  <dd>Native</dd>
-                </div>
-                <div>
-                  <dt>Hakka</dt>
-                  <dd>Native</dd>
-                </div>
-              </dl>
+            <div className="skills-languages">
+              <div>
+                <span className="mini-label">SKILLS</span>
+                <ul className="skill-list">
+                  {skills.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span className="mini-label">LANGUAGES</span>
+                <dl className="language-proficiency">
+                  <div>
+                    <dt>English</dt>
+                    <dd>Proficient</dd>
+                  </div>
+                  <div>
+                    <dt>Mandarin</dt>
+                    <dd>Native</dd>
+                  </div>
+                  <div>
+                    <dt>Cantonese</dt>
+                    <dd>Native</dd>
+                  </div>
+                  <div>
+                    <dt>Hakka</dt>
+                    <dd>Native</dd>
+                  </div>
+                </dl>
+              </div>
             </div>
           </div>
         </section>
@@ -548,7 +575,8 @@ function App() {
             <div className="contact-main">
               <p>For remote opportunities around estimating:</p>
               <a href="mailto:stanleyu9898@gmail.com">
-                stanleyu9898@gmail.com <span aria-hidden="true">{"\u2197\uFE0E"}</span>
+                stanleyu9898@gmail.com{" "}
+                <span aria-hidden="true">{"\u2197\uFE0E"}</span>
               </a>
             </div>
             <div className="target-roles" aria-label="Target leadership roles">

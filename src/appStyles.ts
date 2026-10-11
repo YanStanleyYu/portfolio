@@ -302,6 +302,10 @@ h1 {
 .tools-languages { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; }
 .tools-languages > div { padding-top: 1.3rem; border-top: 0.1875rem solid var(--ink); }
 .tools-languages p { margin: .4rem 0 0; }
+.skills-languages > div + div { margin-top: 2.5rem; padding-top: 1.3rem; border-top: 0.1875rem solid var(--ink); }
+.skill-list { margin: .8rem 0 0; padding-left: 1.1rem; list-style: disc; font-size: .9rem; line-height: 1.55; }
+.skill-list li + li { margin-top: .4rem; }
+.skill-list li::marker { color: var(--blue-deep); }
 .language-proficiency { display: grid; gap: .35rem; margin: 1.1rem 0 0; }
 .language-proficiency div { display: flex; justify-content: space-between; gap: 1rem; }
 .language-proficiency dt, .language-proficiency dd { margin: 0; }
